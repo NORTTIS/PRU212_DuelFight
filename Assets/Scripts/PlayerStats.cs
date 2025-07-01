@@ -164,11 +164,11 @@ public class PlayerStats : MonoBehaviour
         }
         else if (playerName == "Player 2")
         {
-            if (Input.GetKeyDown(KeyCode.Q)) Heal(20);
-            if (Input.GetKeyDown(KeyCode.W)) ApplyBuff(PlayerBuffType.Damage, 5, 5f);
-            if (Input.GetKeyDown(KeyCode.E)) AddMana(2);
-            if (Input.GetKeyDown(KeyCode.R)) ApplyRandomEffect();
-            if (Input.GetKeyDown(KeyCode.T)) TakeDamage(FindFirstObjectByType<GameManager>().player1.currentAttack, "Player 1");
+            if (Input.GetKeyDown(KeyCode.G)) Heal(20);
+            if (Input.GetKeyDown(KeyCode.H)) ApplyBuff(PlayerBuffType.Damage, 5, 5f);
+            if (Input.GetKeyDown(KeyCode.J)) AddMana(2);
+            if (Input.GetKeyDown(KeyCode.K)) ApplyRandomEffect();
+            if (Input.GetKeyDown(KeyCode.L)) TakeDamage(FindFirstObjectByType<GameManager>().player1.currentAttack, "Player 1");
         }
     }
 
