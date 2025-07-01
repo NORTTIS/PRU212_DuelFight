@@ -75,17 +75,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
     }
     void HandleJump()
     {
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
         {
             // Đang rơi xuống -> tăng trọng lực
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0)
+        else if (rb.linearVelocity.y > 0)
         {
             // Kiểm tra người chơi có thả nút nhảy sớm không
             bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.Space)) ||
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             if (releasedJump)
             {
                 // Rơi sớm -> nhảy thấp hơn
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+                rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
     }
