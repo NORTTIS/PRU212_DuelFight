@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928da3a77d4d1574486a2da91e4767ad, type: 3}
+  m_Name: Buff_DamageUp_+10
+  m_EditorClassIdentifier: 
+  effectName: Buff_DamageUp_+10
+  type: 0
+  value: 10
+  duration: 5
