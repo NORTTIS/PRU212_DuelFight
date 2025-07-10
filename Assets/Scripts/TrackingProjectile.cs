@@ -25,9 +25,15 @@ public class TrackingProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform == shooter) return; // Không va chạm với người bắn
+        Debug.Log("Projectile collided with: " + other.name);
+        if (other.transform == shooter)
+        {
+            Debug.Log("Collided with shooter, ignore");
+            return;
+        }
         if (other.CompareTag("Player") && other.GetComponent<PlayerController>().isPlayer1 != isPlayer1)
         {
+            Debug.Log("Hit opponent, deal damage");
             PlayerStats stats = other.GetComponent<PlayerStats>();
             if (stats != null)
                 stats.TakeDamage(GameManager.Instance.player1.baseAttack, "TrackingProjectile");
@@ -35,6 +41,7 @@ public class TrackingProjectile : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
+            Debug.Log("Hit ground, destroy projectile");
             Destroy(gameObject);
         }
     }

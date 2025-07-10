@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1125011183069832158}
   - component: {fileID: 1358345319522613110}
   - component: {fileID: -7347294329816785132}
-  - component: {fileID: -8483842463703575877}
   m_Layer: 0
   m_Name: TrackingProjectile
   m_TagString: Untagged
@@ -192,18 +191,4 @@ MonoBehaviour:
   speed: 8
   target: {fileID: 0}
   isPlayer1: 0
---- !u!114 &-8483842463703575877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903406610604000633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c239c8d3ac7db24e991b9005e35c09a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  target: {fileID: 0}
-  isPlayer1: 0
+  shooter: {fileID: 0}
