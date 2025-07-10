@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class ArrowAimingController : MonoBehaviour
 {
-    [SerializeField] float upperAngle = 45f;  // Giới hạn xoay lên
-    [SerializeField] float lowerAngle = -45f; // Giới hạn xoay xuống (âm)
+    [SerializeField] float upperAngle = 60f;  // Giới hạn trên của góc
+    [SerializeField] float lowerAngle = 0f;   // Giới hạn dưới của góc
     [SerializeField] float rotateSpeed = 2f;
-    // Góc lệch tối đa
+    [SerializeField] bool isFacingRight = true;
+
 
     void Update()
     {
@@ -44,6 +46,27 @@ public class ArrowAimingController : MonoBehaviour
         // Vẽ cung giữa 2 giới hạn
         Gizmos.color = new Color(1f, 0.5f, 0f, 0.3f); // cam mờ
         DrawArc(origin, Vector3.right, lowerAngle, upperAngle, length, 20);
+    }
+
+
+    public void SetFacingDirection(bool facingRight)
+    {
+
+        if (isFacingRight ^ facingRight)
+        {
+            if (upperAngle > lowerAngle)
+            {
+                upperAngle = 120f;
+                lowerAngle = 180f;
+            }
+            else
+            {
+                upperAngle = 60f;
+                lowerAngle = 0f;
+            }
+            isFacingRight = facingRight;
+        }
+
     }
 
 
