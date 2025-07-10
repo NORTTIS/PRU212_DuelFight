@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        player1 = player1Prefab.GetComponent<PlayerStats>();
+        player2 = player2Prefab.GetComponent<PlayerStats>();
     }
     void Start()
     {

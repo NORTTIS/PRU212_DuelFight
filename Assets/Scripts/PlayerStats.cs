@@ -43,7 +43,8 @@ public class PlayerStats : MonoBehaviour
         }
         if (oneHitKO) amount = currentHP;
         currentHP -= amount;
-        Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}");
+
+        Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}, blocking {isBlocking}");
 
         if (currentHP <= 0)
         {
@@ -142,7 +143,7 @@ public class PlayerStats : MonoBehaviour
     {
         oneHitKO = true;
         Debug.Log($"{playerName} is in ONE-HIT KO mode!");
-    }   
+    }
 
     public void SetConfuse(float duration)
     {
