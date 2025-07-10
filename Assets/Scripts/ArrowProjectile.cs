@@ -10,7 +10,7 @@ public class ArrowProjectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") &&
             collision.gameObject.GetComponent<PlayerController>().isPlayer1 != isPlayer1)
         {
-            GameManager.Instance.PlayerTakeDamage(!isPlayer1, GameManager.damageType.BASIC);
+            GameManager.Instance.PlayerTakeDamageFromOther(!isPlayer1);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Ground"))

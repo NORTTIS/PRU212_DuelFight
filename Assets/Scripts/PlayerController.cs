@@ -29,12 +29,15 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded = false;
 
+    private PlayerStats playerStats;
+
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -43,8 +46,49 @@ public class PlayerController : MonoBehaviour
         Movement();
         HandleJump();
         Fire();
+        HandleSkillInput();
     }
 
+    void HandleSkillInput()
+    {
+        if (isPlayer1)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+                playerStats.UseSkill(Enums.SkillType.Block);
+            if (Input.GetKeyDown(KeyCode.E))
+                playerStats.UseSkill(Enums.SkillType.Heal);
+            if (Input.GetKeyDown(KeyCode.R))
+                playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+                playerStats.UseSkill(Enums.SkillType.Block);
+            if (Input.GetKeyDown(KeyCode.I))
+                playerStats.UseSkill(Enums.SkillType.Heal);
+            if (Input.GetKeyDown(KeyCode.O))
+                playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+        }
+        if (playerStats.requestTrackingBullet)
+        {
+            FireTrackingBullet();
+            playerStats.requestTrackingBullet = false;
+        }
+    }
+    void FireTrackingBullet()
+    {
+        PlayerStats target = isPlayer1 ? GameManager.Instance.player2 : GameManager.Instance.player1;
+        GameObject proj = Instantiate(GameManager.Instance.trackingProjectilePrefab, firePoint.position, Quaternion.identity);
+        TrackingProjectile tp = proj.GetComponent<TrackingProjectile>();
+        tp.SetTarget(target.transform);
+        tp.isPlayer1 = isPlayer1;
+        tp.shooter = this.transform;
+
+        // Bỏ qua va chạm với chính người bắn
+        Collider2D playerCollider = GetComponent<Collider2D>();
+        Collider2D projCollider = proj.GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+    }
     void Movement()
     {
         float moveInput = 0f;
@@ -75,17 +119,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
     }
     void HandleJump()
     {
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
         {
             // Đang rơi xuống -> tăng trọng lực
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0)
+        else if (rb.linearVelocity.y > 0)
         {
             // Kiểm tra người chơi có thả nút nhảy sớm không
             bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.Space)) ||
@@ -94,7 +138,7 @@ public class PlayerController : MonoBehaviour
             if (releasedJump)
             {
                 // Rơi sớm -> nhảy thấp hơn
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+                rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
     }
