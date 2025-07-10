@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerStats player1;
     public PlayerStats player2;
     public float matchTime = 30f;
+    public GameObject trackingProjectilePrefab;
     // [SerializeField] private Transform player1SpawnPoint;
     // [SerializeField] private Transform player2SpawnPoint;
 
@@ -40,11 +41,8 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeDamageFromOther(bool isPlayer1)
     {
         PlayerStats targetPlayer = isPlayer1 ? player1 : player2;
-        int damage = 0;
-        damage = isPlayer1 ? player2.baseAttack : player1.baseAttack;
-
-        targetPlayer.currentHP -= damage;
-        Debug.Log($"Player {(isPlayer1 ? "1" : "2")} took {damage} damage. Remaining health: {targetPlayer.currentHP}");
+        int damage = isPlayer1 ? player2.baseAttack : player1.baseAttack;
+        targetPlayer.TakeDamage(damage, "Skill/Projectile");
     }
 
     void EvaluateWinner()

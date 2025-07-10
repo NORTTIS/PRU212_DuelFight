@@ -25,4 +25,11 @@ public class Enums : MonoBehaviour
         SpeedPenalty,
         Confusion
     }
+
+    public enum SkillType
+    {
+        Block,
+        Heal,
+        TrackingBullet
+    }
 }

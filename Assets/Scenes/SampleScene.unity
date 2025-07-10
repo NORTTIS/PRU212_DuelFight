@@ -159,6 +159,8 @@ MonoBehaviour:
   currentSpeed: 1
   isConfused: 0
   oneHitKO: 0
+  isBlocking: 0
+  requestTrackingBullet: 0
 --- !u!4 &219565198
 Transform:
   m_ObjectHideFlags: 0
@@ -987,6 +989,8 @@ MonoBehaviour:
   currentSpeed: 1
   isConfused: 0
   oneHitKO: 0
+  isBlocking: 0
+  requestTrackingBullet: 0
 --- !u!4 &1243763690
 Transform:
   m_ObjectHideFlags: 0
@@ -1291,6 +1295,7 @@ MonoBehaviour:
   player1: {fileID: 1243763689}
   player2: {fileID: 219565197}
   matchTime: 180
+  trackingProjectilePrefab: {fileID: 903406610604000633, guid: e8c31efc428875242b0b1061dcf2d74a, type: 3}
 --- !u!4 &1441803081
 Transform:
   m_ObjectHideFlags: 0
