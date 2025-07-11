@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowAimingController arrowAiming;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] float fireLockRate = 0.2f;
 
     [SerializeField] float arrowSpeed = 10f;
     [SerializeField] float arrowLifetime = 2f;
@@ -196,8 +197,8 @@ public class PlayerController : MonoBehaviour
             Collider2D playerCollider = GetComponent<Collider2D>();
             Collider2D projCollider = proj.GetComponent<Collider2D>();
             Physics2D.IgnoreCollision(playerCollider, projCollider, true);
-
-            Destroy(proj, 2f);
+            arrowAiming.LockAimingDirection(fireLockRate);
+            Destroy(proj, arrowLifetime);
         }
     }
 
