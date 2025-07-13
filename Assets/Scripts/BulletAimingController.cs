@@ -1,189 +1,229 @@
-using System.Collections;
 using UnityEngine;
 
 public class ArrowAimingController : MonoBehaviour
 {
-    [Header("Cài đặt góc bắn")]
-    [SerializeField] private float upperAngle = 60f;   // Góc bắn tối đa (lên trên)
-    [SerializeField] private float lowerAngle = 0f;    // Góc bắn tối thiểu (thấp nhất)
+    [Header("Setting right aiming angles")]
+    [SerializeField] private float rightUpperAngle = 60f;
+    [SerializeField] private float rightLowerAngle = -20f;
 
-    [SerializeField] private float upperAngleLeft = 120f;      // Góc bắn tối đa (lên trên)
-    [SerializeField] private float lowerAngleLeft = 180f;      // Góc bắn tối thiểu (thấp nhất)
+    [Header("Setting left aiming angles")]
+    [SerializeField] private float leftUpperAngle = 120f;
+    [SerializeField] private float leftLowerAngle = 200f;
 
-    private float upAngle;  // Góc bắn tối đa hiện tại
-    private float lowAngle;  // Góc bắn tối thiểu hiện tại
-    [SerializeField] private float rotateSpeed = 2f;   // Tốc độ xoay góc
-    [SerializeField] private bool isFacingRight = true; // Hướng nhân vật đang quay mặt
+    [SerializeField] private float rotateSpeed = 50f; // Tốc độ xoay (độ/giây)
+    [SerializeField] private bool isFacingRight = true;
 
-    [SerializeField] GameObject ArrowDirection;
+    [SerializeField] private GameObject ArrowDirection;
 
+    private float upperAngle;
+    private float lowerAngle;
 
-    private bool isLocked = false;         // Trạng thái khóa góc bắn (đã bắn)
-    private float lockEndTime;             // Thời điểm kết thúc lock
-    private float cachedAngle = 0f;        // Góc bắn được lưu lại
-    private float lastShotTime = -Mathf.Infinity; // Thời gian bắn trước đó
+    private bool isLocked = false;
+    private float lockEndTime;
+    private float cachedAngle = 0f;
+    private float lastShotTime = -Mathf.Infinity;
 
-    private const float lockThreshold = 0.2f;  // Khoảng thời gian cần giãn cách giữa 2 lần lock
+    private const float lockThreshold = 0.2f;
 
-    // Biến dùng để tính toán tiếp tục xoay mượt sau khi unlock
-    private float unlockedOffset = 0f;
-    private float unlockedStartTime = 0f;
+    private float currentAngle; // Góc hiện tại của mũi tên
+    private int aimingDirection = 1; // +1 = tiến tới upperAngle, -1 = tiến tới lowerAngle
+    private bool isFlipping = false; // Đang chuyển hướng
+    private float targetAngle; // Góc mục tiêu khi đổi hướng
+
+    private void Awake()
+    {
+        ApplyFacingDirection(isFacingRight);
+        currentAngle = (upperAngle + lowerAngle) / 2f; // Khởi tạo góc ở giữa phạm vi
+    }
 
     private void Update()
     {
-        updateFireAngle();
+        UpdateFireAngle();
         MoveArrowAlongArc();
     }
 
-
-    // Cập nhật góc xoay mũi tên (dựa theo thời gian hoặc khi đã lock)
-    private void updateFireAngle()
+    private void UpdateFireAngle()
     {
         if (isLocked)
         {
+            // Giữ góc cố định khi khóa
             transform.rotation = Quaternion.Euler(0, 0, cachedAngle);
-            ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, cachedAngle);
+            if (ArrowDirection != null)
+                ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, cachedAngle);
 
+            // Mở khóa khi hết thời gian
             if (Time.time >= lockEndTime)
             {
                 isLocked = false;
+                currentAngle = cachedAngle;
+                ClampCurrentAngle();
+            }
 
-                // Sau khi hết thời gian lock, tiếp tục xoay lại mượt từ đúng vị trí cũ
-                unlockedStartTime = Time.time;
+            return; // Dừng tại đây nếu đang locked
+        }
+        else if (isFlipping)
+        {
+            // Gán góc đích khi đổi hướng
+            currentAngle = targetAngle;
 
-                // Tính toán t (giá trị đầu vào cho sin) từ cachedAngle
-                float normalized = ((cachedAngle - lowerAngle) / (upperAngle - lowerAngle) - 0.5f) * 2f;
-                normalized = Mathf.Clamp(normalized, -1f, 1f);
+            transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+            if (ArrowDirection != null)
+                ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, currentAngle);
 
-                unlockedOffset = Mathf.Asin(normalized) / rotateSpeed;
+            if (Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle)) < 0.01f)
+            {
+                isFlipping = false;
+                ClampCurrentAngle();
+            }
 
-                if (float.IsNaN(unlockedOffset))
-                    unlockedOffset = 0f; // fallback nếu lỗi
+            return; // Dừng tại đây nếu đang flipping
+        }
+
+        // === Nếu không locked và không flipping, thì tiếp tục xoay tự động ===
+
+        // Kiểm tra giới hạn và đảo hướng nếu chạm biên
+        if (isFacingRight)
+        {
+            if (currentAngle >= upperAngle)
+            {
+                currentAngle = upperAngle;
+                aimingDirection = -1;
+            }
+            else if (currentAngle <= lowerAngle)
+            {
+                currentAngle = lowerAngle;
+                aimingDirection = 1;
             }
         }
         else
         {
-            // Nếu không bị lock thì liên tục xoay qua lại theo sin
-            float t = Mathf.Sin((Time.time - unlockedStartTime + unlockedOffset) * rotateSpeed) * 0.5f + 0.5f;
-            float angle = Mathf.Lerp(lowerAngle, upperAngle, t);
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-            ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-        // DrawArc();
-    }
-
-
-    // Hàm lấy hướng bắn hiện tại (dạng Vector2)
-    public Vector2 GetDirection()
-    {
-        return transform.right.normalized;
-    }
-
-    // Khóa góc bắn trong 1 khoảng thời gian ngắn sau khi bắn
-    public void LockAimingDirection(float duration = 0.2f)
-    {
-        // Chỉ lưu lại góc nếu thời gian từ lần bắn trước >= ngưỡng
-        if (Time.time - lastShotTime >= lockThreshold)
-        {
-            cachedAngle = transform.rotation.eulerAngles.z;
-        }
-
-        lastShotTime = Time.time;
-        isLocked = true;
-        lockEndTime = Time.time + duration;
-    }
-    // Thiết lập hướng quay mặt(true = phải, false = trái)
-    // Và cập nhật lại góc bắn tương ứng cho mỗi bên
-    public void SetFacingDirection(bool facingRight)
-    {
-        // Nếu thay đổi hướng so với trước đó thì cập nhật lại góc
-        if (isFacingRight ^ facingRight)
-        {
-            if (upperAngle > lowerAngle)
+            if (currentAngle >= lowerAngle)
             {
-                // Đang quay phải → chuyển sang trái
-                upAngle = upperAngleLeft;
-                lowAngle = lowerAngleLeft;
+                currentAngle = lowerAngle;
+                aimingDirection = -1;
             }
-            else
+            else if (currentAngle <= upperAngle)
             {
-                // Đang quay trái → chuyển sang phải
-                upAngle = upperAngle;
-                lowAngle = lowerAngle;
+                currentAngle = upperAngle;
+                aimingDirection = 1;
             }
-
-            isFacingRight = facingRight;
         }
-    }
-    void OnDrawGizmos()
-    {
-        float length = 2f;
-        Vector3 origin = transform.position;
-        Vector3 currentDir = transform.right;
 
-        // Hướng hiện tại
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(origin, origin + currentDir * length);
+        // Di chuyển theo hướng hiện tại
+        currentAngle += aimingDirection * rotateSpeed * Time.deltaTime;
 
-        // Giới hạn trên
-        Vector3 upperDir = Quaternion.Euler(0, 0, upperAngle) * Vector3.right;
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(origin, origin + upperDir.normalized * length);
-
-        // Giới hạn dưới
-        Vector3 lowerDir = Quaternion.Euler(0, 0, lowerAngle) * Vector3.right;
-        Gizmos.DrawLine(origin, origin + lowerDir.normalized * length);
-
-        // Vẽ cung giữa 2 giới hạn
-        Gizmos.color = new Color(1f, 0.5f, 0f, 0.3f); // cam mờ
-        DrawArc(origin, Vector3.right, lowerAngle, upperAngle, length, 20);
-    }
-    void DrawArc(Vector3 center, Vector3 startDir, float startAngle, float endAngle, float radius, int segments)
-    {
-        Vector3 prevPoint = center + Quaternion.Euler(0, 0, startAngle) * startDir.normalized * radius;
-
-        for (int i = 1; i <= segments; i++)
-        {
-            float t = (float)i / segments;
-            float angle = Mathf.Lerp(startAngle, endAngle, t);
-            Vector3 nextPoint = center + Quaternion.Euler(0, 0, angle) * startDir.normalized * radius;
-            Gizmos.DrawLine(prevPoint, nextPoint);
-            prevPoint = nextPoint;
-        }
+        // Cập nhật xoay
+        transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+        if (ArrowDirection != null)
+            ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
 
-    // void DrawArc()
-    // {
-    //     Vector3 center = transform.position;
-    //     Vector3 startDir = Vector3.right;
-
-    //     for (int i = 0; i <= arcSegments; i++)
-    //     {
-    //         float t = (float)i / arcSegments;
-    //         float angle = Mathf.Lerp(lowerAngle, upperAngle, t);
-    //         Vector3 point = center + Quaternion.Euler(0, 0, angle) * startDir * arcLength;
-    //     }
-    // }
     private void MoveArrowAlongArc()
     {
         if (ArrowDirection == null) return;
 
         Vector3 center = transform.position;
-        Vector3 startDir = Vector3.right;
+        float angle = isLocked ? cachedAngle : currentAngle;
+        angle = ClampAngle(angle, lowerAngle, upperAngle); // Giới hạn góc trước khi sử dụng
 
-        float t = Mathf.Sin((Time.time - unlockedStartTime + unlockedOffset) * rotateSpeed) * 0.5f + 0.5f;
-        float angle = isLocked
-                    ? cachedAngle
-                    : Mathf.Lerp(lowerAngle, upperAngle, t);
-
-        // Vị trí mới theo cung tròn
-        Vector3 currentPos = center + Quaternion.Euler(0, 0, angle) * startDir * 2f;
-
-        // Gán vị trí
+        Vector3 currentPos = center + Quaternion.Euler(0, 0, angle) * Vector3.right * 2f;
         ArrowDirection.transform.position = currentPos;
-
-        // Hướng thẳng theo góc bắn (dựa trên góc angle)
         ArrowDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    public Vector2 GetDirection()
+    {
+        return transform.right.normalized;
+    }
+
+    public void LockAimingDirection(float duration = 0.2f)
+    {
+        if (Time.time - lastShotTime >= lockThreshold)
+        {
+            cachedAngle = currentAngle; // Lưu góc hiện tại
+            isLocked = true;
+            lockEndTime = Time.time + duration;
+            lastShotTime = Time.time;
+        }
+    }
+
+    public void SetFacingDirection(bool facingRight)
+    {
+        if (isFacingRight != facingRight)
+        {
+            isFacingRight = facingRight;
+            ApplyFacingDirection(facingRight);
+
+            // Ánh xạ góc qua pháp tuyến 90°
+            float mirrored = 180f - currentAngle;
+            targetAngle = ClampAngle(mirrored, lowerAngle, upperAngle);
+            currentAngle = targetAngle;
+
+            // Đảo hướng di chuyển: xu hướng cũ đối xứng sang bên kia
+            aimingDirection *= -1;
+
+            // Bắt đầu quá trình chuyển hướng
+            isFlipping = true;
+        }
+    }
+
+    private void ApplyFacingDirection(bool facingRight)
+    {
+        if (facingRight)
+        {
+            upperAngle = rightUpperAngle;
+            lowerAngle = rightLowerAngle;
+        }
+        else
+        {
+            upperAngle = leftUpperAngle;
+            lowerAngle = leftLowerAngle;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        float length = 2f;
+        Vector3 origin = transform.position;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(origin, origin + transform.right * length);
+
+        Vector3 upperDir = Quaternion.Euler(0, 0, upperAngle) * Vector3.right;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(origin, origin + upperDir * length);
+
+        Vector3 lowerDir = Quaternion.Euler(0, 0, lowerAngle) * Vector3.right;
+        Gizmos.DrawLine(origin, origin + lowerDir * length);
+
+        Gizmos.color = new Color(1f, 0.5f, 0f, 0.3f);
+        DrawArcGizmo(origin, Vector3.right, Mathf.Min(lowerAngle, upperAngle), Mathf.Max(lowerAngle, upperAngle), length, 20);
+    }
+
+    private void DrawArcGizmo(Vector3 center, Vector3 startDir, float startAngle, float endAngle, float radius, int segments)
+    {
+        Vector3 prevPoint = center + Quaternion.Euler(0, 0, startAngle) * startDir * radius;
+
+        for (int i = 1; i <= segments; i++)
+        {
+            float t = (float)i / segments;
+            float angle = Mathf.Lerp(startAngle, endAngle, t);
+            Vector3 nextPoint = center + Quaternion.Euler(0, 0, angle) * startDir * radius;
+            Gizmos.DrawLine(prevPoint, nextPoint);
+            prevPoint = nextPoint;
+        }
+    }
+
+    private float ClampAngle(float angle, float min, float max)
+    {
+        if (min < max)
+            return Mathf.Clamp(angle, min, max);
+        else
+            return Mathf.Clamp(angle, max, min); // Xử lý trường hợp min > max (hướng trái)
+    }
+
+    private void ClampCurrentAngle()
+    {
+        currentAngle = ClampAngle(currentAngle, lowerAngle, upperAngle);
+    }
 }
