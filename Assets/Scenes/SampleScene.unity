@@ -1428,13 +1428,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370644926}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39, y: -0.12, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.38999987, y: -0.119999886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 427451740}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1441803079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,11 +1529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed106f26162999741914f1ff7e89ba1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperAngle: 100
-  lowerAngle: 200
-  upperAngleLeft: 120
-  lowerAngleLeft: 180
-  rotateSpeed: 2
+  rightUpperAngle: 90
+  rightLowerAngle: -20
+  leftUpperAngle: 90
+  leftLowerAngle: 200
+  rotateSpeed: 60
   isFacingRight: 0
   ArrowDirection: {fileID: 1986373995}
 --- !u!1 &1657144965
@@ -1580,11 +1580,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed106f26162999741914f1ff7e89ba1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperAngle: 80
-  lowerAngle: -20
-  upperAngleLeft: 120
-  lowerAngleLeft: 180
-  rotateSpeed: 2
+  rightUpperAngle: 90
+  rightLowerAngle: -20
+  leftUpperAngle: 90
+  leftLowerAngle: 200
+  rotateSpeed: 60
   isFacingRight: 1
   ArrowDirection: {fileID: 1056897738}
 --- !u!1 &1986373995 stripped
