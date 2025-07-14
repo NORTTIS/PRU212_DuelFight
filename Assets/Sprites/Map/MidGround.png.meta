@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7a53ed2d9cc34c54292b04a896b744c5
+guid: 96ba5f5e64d6f3c4b97fd10fb667487f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8528718836724342035
-    second: hero-idle-side-blue_0
+      213: 2939248397069386988
+    second: MidGround_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hero-idle-side-blue_0
+      name: MidGround_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 1
-        width: 16
-        height: 24
+        x: 0
+        y: 0
+        width: 384
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de2ecd3b767e3a980800000000000000
-      internalID: -8528718836724342035
+      spriteID: ce405f528de4ac820800000000000000
+      internalID: 2939248397069386988
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      hero-idle-side-blue_0: -8528718836724342035
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
