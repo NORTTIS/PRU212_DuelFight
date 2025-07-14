@@ -34,6 +34,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         matchTime -= Time.deltaTime;
+        
+        // Update UI timer
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateMatchTimer(matchTime);
+        }
+        
         if (matchTime <= 0f)
         {
             EvaluateWinner();
@@ -57,6 +64,12 @@ public class GameManager : MonoBehaviour
     void EndGame(PlayerStats winner)
     {
         Debug.Log("Winner: " + winner.playerName);
+        
+        // Show game over UI
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowGameOver(winner.playerName, player1.score, player2.score);
+        }
     }
 
     public void HandleDeath(PlayerStats deadPlayer)
@@ -64,6 +77,14 @@ public class GameManager : MonoBehaviour
         PlayerStats killer = deadPlayer == player1 ? player2 : player1;
         killer.score++;
         Debug.Log($"{deadPlayer.playerName} died — {killer.playerName} gains 1 score!");
+        
+        // Update UI scores
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdatePlayerScore(true, player1.score);
+            UIManager.Instance.UpdatePlayerScore(false, player2.score);
+        }
+        
         StartCoroutine(Respawn(deadPlayer));
     }
 
