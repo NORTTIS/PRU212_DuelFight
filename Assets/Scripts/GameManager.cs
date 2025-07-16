@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     // [SerializeField] private Transform player1SpawnPoint;
     // [SerializeField] private Transform player2SpawnPoint;
 
-    //private bool suddenDeathActivated = false;
     private bool isGameEnded = false;
     private bool overtimeDeathCheck = false;
 
@@ -182,14 +181,4 @@ public class GameManager : MonoBehaviour
             Debug.Log($"Player {(isPlayer1 ? "1" : "2")} took {damage} damage. Remaining health: {targetPlayer.currentHP}");
         }
     }
-
-    //void ActivateSuddenDeath()
-    //{
-    //    if (suddenDeathActivated) return;
-
-    //    suddenDeathActivated = true;
-    //    Debug.Log("Sudden Death! One Hit KO activated.");
-    //    player1.ActivateOneHitKO();
-    //    player2.ActivateOneHitKO();
-    //}
 }

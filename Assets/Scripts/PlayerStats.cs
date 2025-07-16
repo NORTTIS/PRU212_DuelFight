@@ -20,7 +20,6 @@ public class PlayerStats : MonoBehaviour
     [Header("Status Flags")]
     public bool isConfused = false;
     public bool isDead = false;
-    //public bool oneHitKO = false;
     public bool isBlocking = false;
 
     void Start()
@@ -42,7 +41,6 @@ public class PlayerStats : MonoBehaviour
             Debug.Log($"{playerName} blocked damage from {source}!");
             return;
         }
-        //if (oneHitKO) amount = currentHP;
         if (currentHP > 0)
         {
             currentHP -= amount;
@@ -138,7 +136,6 @@ public class PlayerStats : MonoBehaviour
         mana = 0;
         isConfused = false;
         isDead = false;
-        //oneHitKO = false;
         currentAttack = baseAttack;
         transform.position = Vector3.zero;
     }
@@ -154,12 +151,6 @@ public class PlayerStats : MonoBehaviour
         transform.position = Vector3.zero;
         Debug.Log($"{playerName} respawned");
     }
-
-    //public void ActivateOneHitKO()
-    //{
-    //    oneHitKO = true;
-    //    Debug.Log($"{playerName} is in ONE-HIT KO mode!");
-    //}
 
     public void SetConfuse(float duration)
     {

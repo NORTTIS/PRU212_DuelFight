@@ -238,12 +238,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d9437d4f3f35244badcce00387dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Prefab: {fileID: 1081928277}
-  player2Prefab: {fileID: 1312011759}
+  player1Prefab: {fileID: 0}
+  player2Prefab: {fileID: 0}
   player1: {fileID: 1081928278}
   player2: {fileID: 1312011760}
   gameMode: 0
   matchTime: 30
+  trackingProjectilePrefab: {fileID: 0}
 --- !u!1 &1003139776
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +437,9 @@ MonoBehaviour:
   baseSpeed: 1
   currentSpeed: 1
   isConfused: 0
-  oneHitKO: 0
+  isDead: 0
+  isBlocking: 0
+  requestTrackingBullet: 0
 --- !u!212 &1081928279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -683,7 +686,9 @@ MonoBehaviour:
   baseSpeed: 1
   currentSpeed: 1
   isConfused: 0
-  oneHitKO: 0
+  isDead: 0
+  isBlocking: 0
+  requestTrackingBullet: 0
 --- !u!212 &1312011761
 SpriteRenderer:
   m_ObjectHideFlags: 0
