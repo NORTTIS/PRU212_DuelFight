@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public float matchTime = 30f;
     private float defaultMatchTime;
+    public GameObject trackingProjectilePrefab;
+    // [SerializeField] private Transform player1SpawnPoint;
+    // [SerializeField] private Transform player2SpawnPoint;
 
     //private bool suddenDeathActivated = false;
     private bool isGameEnded = false;
@@ -23,11 +26,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         defaultMatchTime = matchTime;
+        player1 = player1Prefab.GetComponent<PlayerStats>();
+        player2 = player2Prefab.GetComponent<PlayerStats>();
     }
-
     void Start()
     {
         player1.playerName = "Player 1";

@@ -30,4 +30,11 @@ public class Enums : MonoBehaviour
         Bo3,
         VictoryByScore
     }
+
+    public enum SkillType
+    {
+        Block,
+        Heal,
+        TrackingBullet
+    }
 }

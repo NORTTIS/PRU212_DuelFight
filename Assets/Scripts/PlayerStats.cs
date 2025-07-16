@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public bool isConfused = false;
     public bool isDead = false;
     //public bool oneHitKO = false;
+    public bool isBlocking = false;
 
     void Start()
     {
@@ -36,12 +37,19 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int amount, string source = "Unknown")
     {
+        if (isBlocking)
+        {
+            Debug.Log($"{playerName} blocked damage from {source}!");
+            return;
+        }
         //if (oneHitKO) amount = currentHP;
         if (currentHP > 0)
         {
             currentHP -= amount;
             Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}");
         }
+
+        Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}, blocking {isBlocking}");
 
         if (currentHP <= 0)
         {
@@ -167,6 +175,57 @@ public class PlayerStats : MonoBehaviour
         Debug.Log($"{playerName} is no longer confused.");
     }
 
+    public bool requestTrackingBullet = false;
+
+    public void UseSkill(Enums.SkillType skill)
+    {
+        switch (skill)
+        {
+            case Enums.SkillType.Block:
+                if (mana >= 2)
+                {
+                    mana -= 2;
+                    StartCoroutine(BlockCoroutine());
+                }
+                else
+                {
+                    Debug.Log($"{playerName} not enough mana for Block");
+                }
+                break;
+            case Enums.SkillType.Heal:
+                if (mana >= 2)
+                {
+                    mana -= 2;
+                    Heal(10);
+                }
+                else
+                {
+                    Debug.Log($"{playerName} not enough mana for Heal");
+                }
+                break;
+            case Enums.SkillType.TrackingBullet:
+                if (mana >= 4)
+                {
+                    mana -= 4;
+                    requestTrackingBullet = true; // Đánh dấu cần bắn đạn
+                }
+                else
+                {
+                    Debug.Log($"{playerName} not enough mana for Tracking Bullet");
+                }
+                break;
+        }
+    }
+
+    private IEnumerator BlockCoroutine()
+    {
+        isBlocking = true;
+        Debug.Log($"{playerName} is blocking for 3 seconds");
+        yield return new WaitForSeconds(3f);
+        isBlocking = false;
+        Debug.Log($"{playerName} block ended");
+    }
+
     void Update()
     {
         if (playerName == "Player 1")
@@ -185,6 +244,7 @@ public class PlayerStats : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K)) ApplyRandomEffect();
             if (Input.GetKeyDown(KeyCode.L)) TakeDamage(FindFirstObjectByType<GameManager>().player1.currentAttack, "Player 1");
         }
+
     }
 
 }

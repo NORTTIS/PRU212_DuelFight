@@ -23,11 +23,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowAimingController arrowAiming;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] float fireLockRate = 0.2f;
 
     [SerializeField] float arrowSpeed = 10f;
+    [SerializeField] float arrowLifetime = 2f;
+    [SerializeField] bool isFacingRight;
     //[SerializeField] float arrowLifetime = 2f;
 
+    [SerializeField] public Animator animator;
+
     private bool isGrounded = false;
+
+    private PlayerStats playerStats;
 
 
     private Rigidbody2D rb;
@@ -35,6 +42,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,10 +52,52 @@ public class PlayerController : MonoBehaviour
         Movement();
         HandleJump();
         Fire();
+        HandleSkillInput();
     }
 
+    void HandleSkillInput()
+    {
+        if (isPlayer1)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+                playerStats.UseSkill(Enums.SkillType.Block);
+            if (Input.GetKeyDown(KeyCode.E))
+                playerStats.UseSkill(Enums.SkillType.Heal);
+            if (Input.GetKeyDown(KeyCode.R))
+                playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+                playerStats.UseSkill(Enums.SkillType.Block);
+            if (Input.GetKeyDown(KeyCode.I))
+                playerStats.UseSkill(Enums.SkillType.Heal);
+            if (Input.GetKeyDown(KeyCode.O))
+                playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+        }
+        if (playerStats.requestTrackingBullet)
+        {
+            FireTrackingBullet();
+            playerStats.requestTrackingBullet = false;
+        }
+    }
+    void FireTrackingBullet()
+    {
+        PlayerStats target = isPlayer1 ? GameManager.Instance.player2 : GameManager.Instance.player1;
+        GameObject proj = Instantiate(GameManager.Instance.trackingProjectilePrefab, firePoint.position, Quaternion.identity);
+        TrackingProjectile tp = proj.GetComponent<TrackingProjectile>();
+        tp.SetTarget(target.transform);
+        tp.isPlayer1 = isPlayer1;
+        tp.shooter = this.transform;
+
+        // Bỏ qua va chạm với chính người bắn
+        Collider2D playerCollider = GetComponent<Collider2D>();
+        Collider2D projCollider = proj.GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+    }
     void Movement()
     {
+
         float moveInput = 0f;
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, 0.2f, groundCheck);
 
@@ -55,7 +106,6 @@ public class PlayerController : MonoBehaviour
             // Player 1: A/D
             if (Input.GetKey(KeyCode.A)) moveInput = -1f;
             if (Input.GetKey(KeyCode.D)) moveInput = 1f;
-
             // Nhảy bằng W
             if (Input.GetKeyDown(KeyCode.W) && isGrounded)
             {
@@ -67,13 +117,23 @@ public class PlayerController : MonoBehaviour
             // Player 2: ← / →
             if (Input.GetKey(KeyCode.LeftArrow)) moveInput = -1f;
             if (Input.GetKey(KeyCode.RightArrow)) moveInput = 1f;
-
             // Nhảy bằng ↑
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
         }
+        if (moveInput > 0 && !isFacingRight)
+            Flip();
+        else if (moveInput < 0 && isFacingRight)
+            Flip();
+        animator.SetFloat("Horizontal", moveInput);
+
+        animator.SetBool("isRunning", moveInput != 0);
+        if (moveInput > 0)
+            animator.SetBool("ishor", true);
+        else if (moveInput < 0)
+            animator.SetBool("ishor", false);
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
@@ -88,7 +148,7 @@ public class PlayerController : MonoBehaviour
         else if (rb.linearVelocity.y > 0)
         {
             // Kiểm tra người chơi có thả nút nhảy sớm không
-            bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.Space)) ||
+            bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.W)) ||
                                 (!isPlayer1 && !Input.GetKey(KeyCode.UpArrow));
 
             if (releasedJump)
@@ -109,8 +169,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Player 2: Chuột phải để bắn
-            shouldFire = Input.GetMouseButtonDown(0); // 1 = chuột trái
+            // Player 2: P để bắn
+            shouldFire = Input.GetKeyDown(KeyCode.P);
         }
 
         if (shouldFire)
@@ -134,9 +194,22 @@ public class PlayerController : MonoBehaviour
             // Thêm lực vào mũi tên theo hướng nhắm
             projRb.AddForce(direction.normalized * arrowSpeed, ForceMode2D.Impulse);
 
-            Destroy(proj, 2f);
+            // Bỏ qua va chạm với chính người bắn
+            Collider2D playerCollider = GetComponent<Collider2D>();
+            Collider2D projCollider = proj.GetComponent<Collider2D>();
+            Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+            arrowAiming.LockAimingDirection(fireLockRate);
+            Destroy(proj, arrowLifetime);
         }
     }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+
+        arrowAiming.SetFacingDirection(isFacingRight);
+    }
+
 
     void OnDrawGizmosSelected()
     {
