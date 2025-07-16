@@ -19,7 +19,8 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Status Flags")]
     public bool isConfused = false;
-    public bool oneHitKO = false;
+    public bool isDead = false;
+    //public bool oneHitKO = false;
 
     void Start()
     {
@@ -35,9 +36,12 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int amount, string source = "Unknown")
     {
-        if (oneHitKO) amount = currentHP;
-        currentHP -= amount;
-        Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}");
+        //if (oneHitKO) amount = currentHP;
+        if (currentHP > 0)
+        {
+            currentHP -= amount;
+            Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}");
+        }
 
         if (currentHP <= 0)
         {
@@ -120,23 +124,34 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void ResetStats()
+    {
+        currentHP = maxHP;
+        mana = 0;
+        isConfused = false;
+        isDead = false;
+        //oneHitKO = false;
+        currentAttack = baseAttack;
+        transform.position = Vector3.zero;
+    }
 
     public void Respawn()
     {
         currentHP = maxHP;
         mana = 0;
         isConfused = false;
-        oneHitKO = false;
+        isDead = false;
+        //oneHitKO = false;
         currentAttack = baseAttack;
         transform.position = Vector3.zero;
         Debug.Log($"{playerName} respawned");
     }
 
-    public void ActivateOneHitKO()
-    {
-        oneHitKO = true;
-        Debug.Log($"{playerName} is in ONE-HIT KO mode!");
-    }
+    //public void ActivateOneHitKO()
+    //{
+    //    oneHitKO = true;
+    //    Debug.Log($"{playerName} is in ONE-HIT KO mode!");
+    //}
 
     public void SetConfuse(float duration)
     {

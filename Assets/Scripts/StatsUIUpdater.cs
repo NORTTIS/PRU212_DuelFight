@@ -23,8 +23,9 @@ public class StatsUIUpdater : MonoBehaviour
                $"ATK: {p.currentAttack}\n" +
                $"Speed: {p.currentSpeed}\n" +
                $"Score: {p.score}\n" +
-               $"Confused: {p.isConfused}\n" +
-               $"OneHitKO: {p.oneHitKO}";
+               $"Confused: {p.isConfused}\n"+
+               $"IsDead: {p.isDead}\n";
+               //$"OneHitKO: {p.oneHitKO}";
     }
 
 }

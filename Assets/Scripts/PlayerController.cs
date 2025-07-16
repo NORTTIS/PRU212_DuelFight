@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform firePoint;
 
     [SerializeField] float arrowSpeed = 10f;
-    [SerializeField] float arrowLifetime = 2f;
+    //[SerializeField] float arrowLifetime = 2f;
 
     private bool isGrounded = false;
 
