@@ -1,22 +1,43 @@
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Item : MonoBehaviour
 {
-    public ItemEffect effect;
+    public ItemEffect effect; // Gắn trong prefab
+    private bool pickedUp = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
+        GetComponent<Collider2D>().isTrigger = true;
+        Destroy(gameObject, 10f); // Tự hủy sau 10s
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (pickedUp) return;
         if (!other.CompareTag("Player")) return;
 
         var player = other.GetComponent<PlayerStats>();
         if (player == null) return;
 
+        pickedUp = true;
+
+        if (effect == null)
+        {
+            Debug.LogWarning($"Item {name} missing ItemEffect reference!");
+            Destroy(gameObject);
+            return;
+        }
+
         if (effect.isRandomBox)
         {
+            Debug.Log($"{name} is a random box: {effect.randomEffectType}");
             ApplyRandomEffect(player, effect.randomEffectType);
         }
         else
         {
+            Debug.Log($"{name} is a fixed item: {effect.itemType}");
             ApplyFixedEffect(player);
         }
 
@@ -41,7 +62,7 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"{player.playerName} used item: {effect.effectName}");
+        Debug.Log($"{player.playerName} used fixed item: {effect.effectName}");
     }
 
     void ApplyRandomEffect(PlayerStats player, Enums.RandomEffect effectType)
@@ -59,11 +80,15 @@ public class Item : MonoBehaviour
                     player.ApplyBuff(effect.buffEffect.type, effect.buffEffect.value, effect.buffEffect.duration);
                 break;
 
+            case Enums.RandomEffect.DamagePenalty:
+                player.TakeDamage(effect.amount, "Penalty");
+                break;
+
             case Enums.RandomEffect.Confusion:
                 player.SetConfuse(effect.buffEffect.duration);
                 break;
         }
 
-        Debug.Log($"{player.playerName} got random effect: {effectType}");
+        Debug.Log($"{player.playerName} received random effect: {effectType} from {name}");
     }
 }

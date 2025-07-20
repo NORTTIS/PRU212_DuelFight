@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc95da975120e54f8184022eadc809d, type: 3}
-  m_Name: RandomBox_Heal_20
+  m_Name: RandomBox_Confusion_5s
   m_EditorClassIdentifier: 
-  effectName: RandomBox_Heal_20
+  effectName: RandomBox_Confusion_5s
   itemType: 2
-  amount: 20
-  buffEffect: {fileID: 0}
+  amount: 0
+  buffEffect: {fileID: 11400000, guid: 41f7a66f85136f747a992d9326cc3620, type: 2}
   isRandomBox: 1
-  randomEffectType: 0
+  randomEffectType: 5

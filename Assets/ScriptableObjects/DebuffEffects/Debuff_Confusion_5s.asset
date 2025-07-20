@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc95da975120e54f8184022eadc809d, type: 3}
-  m_Name: RandomBox_Heal_20
+  m_Script: {fileID: 11500000, guid: 928da3a77d4d1574486a2da91e4767ad, type: 3}
+  m_Name: Debuff_Confusion_5s
   m_EditorClassIdentifier: 
-  effectName: RandomBox_Heal_20
-  itemType: 2
-  amount: 20
-  buffEffect: {fileID: 0}
-  isRandomBox: 1
-  randomEffectType: 0
+  effectName: Debuff_Confusion_5s
+  type: 0
+  value: 1
+  duration: 5

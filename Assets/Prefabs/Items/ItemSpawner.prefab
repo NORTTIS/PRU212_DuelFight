@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8772317663501306568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3839286878690828791}
+  - component: {fileID: 3910368081403494407}
+  m_Layer: 0
+  m_Name: ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3839286878690828791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772317663501306568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.51863, y: -0.23206, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3910368081403494407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772317663501306568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcaf0d450d86374f878d1081c9f3127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 2072696518823926474, guid: 2501d28ec2c05fb44b68a5240ccd8a14, type: 3}
+  - {fileID: 3073449520374290292, guid: 3a6cf4560b3fd4744b65b7efdaa9c0e0, type: 3}
+  - {fileID: 8135465250964934252, guid: bcc079805b241a140b8575737c0a0c61, type: 3}
+  - {fileID: 1393254103937863393, guid: 75c43f1ee7ee5bc4bb11f0b8ad59697a, type: 3}
+  - {fileID: 1628515490868914077, guid: ae705226048daeb4d96ec40f82f1068a, type: 3}
+  - {fileID: 3179121434603475731, guid: 75b85813496f09244afc2637ac6fcce9, type: 3}
+  - {fileID: 1962498829544726023, guid: 3d2c7fa25b0551547b09b42687fea4c9, type: 3}
+  - {fileID: 5790120063233016654, guid: 9c7a80545e5285140ae38e21d16fe5c9, type: 3}
+  - {fileID: 1138521134794189283, guid: 480c4bb98a7e3474597fbd728266c260, type: 3}
+  spawnInterval: 20
+  spawnHeight: 5
