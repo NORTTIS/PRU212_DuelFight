@@ -54,8 +54,8 @@ public class PlayerStats : MonoBehaviour
 
     public void AddMana(int amount)
     {
-        mana = Mathf.Min(10, mana + amount);
-        Debug.Log($"{playerName} gained {amount} mana → {mana}/10");
+        mana = Mathf.Min(40, mana + amount);
+        Debug.Log($"{playerName} gained {amount} mana → {mana}/40");
     }
 
     public void ApplyBuff(PlayerBuffType type, float value, float duration)
@@ -218,7 +218,6 @@ public class PlayerStats : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha2)) ApplyBuff(PlayerBuffType.Damage, 5, 5f);
             if (Input.GetKeyDown(KeyCode.Alpha3)) AddMana(2);
             if (Input.GetKeyDown(KeyCode.Alpha4)) ApplyRandomEffect();
-            if (Input.GetKeyDown(KeyCode.Alpha5)) TakeDamage(FindFirstObjectByType<GameManager>().player2.currentAttack, "Player 2");
         }
         else if (playerName == "Player 2")
         {
@@ -226,7 +225,6 @@ public class PlayerStats : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.H)) ApplyBuff(PlayerBuffType.Damage, 5, 5f);
             if (Input.GetKeyDown(KeyCode.J)) AddMana(2);
             if (Input.GetKeyDown(KeyCode.K)) ApplyRandomEffect();
-            if (Input.GetKeyDown(KeyCode.L)) TakeDamage(FindFirstObjectByType<GameManager>().player1.currentAttack, "Player 1");
         }
 
     }

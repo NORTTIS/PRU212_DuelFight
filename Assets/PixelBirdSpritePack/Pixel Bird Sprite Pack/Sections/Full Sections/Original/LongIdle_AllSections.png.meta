@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 6ebe3f9f39ce6fe4d97a6d12fd499312
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3417461330733064022
+    second: LongIdle_AllSections_0
+  - first:
+      213: -3679331116487923926
+    second: LongIdle_AllSections_1
+  - first:
+      213: 8255141238475283299
+    second: LongIdle_AllSections_2
+  - first:
+      213: -7873627597011703343
+    second: LongIdle_AllSections_3
+  - first:
+      213: -1631291001751673235
+    second: LongIdle_AllSections_4
+  - first:
+      213: -7635367949023896717
+    second: LongIdle_AllSections_5
+  - first:
+      213: 3393642051634429244
+    second: LongIdle_AllSections_6
+  - first:
+      213: -2714486443823004837
+    second: LongIdle_AllSections_7
+  - first:
+      213: 714418231293625781
+    second: LongIdle_AllSections_8
+  - first:
+      213: 1626016205867044215
+    second: LongIdle_AllSections_9
+  - first:
+      213: -6711103018383654999
+    second: LongIdle_AllSections_10
+  - first:
+      213: -3698060538989504415
+    second: LongIdle_AllSections_11
+  - first:
+      213: 1689417398647188515
+    second: LongIdle_AllSections_12
+  - first:
+      213: -7611018652859329858
+    second: LongIdle_AllSections_13
+  - first:
+      213: 5374647983966565833
+    second: LongIdle_AllSections_14
+  - first:
+      213: 391063119438831331
+    second: LongIdle_AllSections_15
+  - first:
+      213: -2860718510746104008
+    second: LongIdle_AllSections_16
+  - first:
+      213: -5958109302681316413
+    second: LongIdle_AllSections_17
+  - first:
+      213: -5223639190797860123
+    second: LongIdle_AllSections_18
+  - first:
+      213: -1485868275517029938
+    second: LongIdle_AllSections_19
+  - first:
+      213: -1616860896125302973
+    second: LongIdle_AllSections_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LongIdle_AllSections_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 400
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f5afb49f24d6f20800000000000000
+      internalID: 3417461330733064022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 399
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2722bee7d360fcc0800000000000000
+      internalID: -3679331116487923926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 29
+        width: 74
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36b5ff10837209270800000000000000
+      internalID: 8255141238475283299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 336
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9a762ba614bb290800000000000000
+      internalID: -7873627597011703343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 335
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d66ec431a7d7c59e0800000000000000
+      internalID: -1631291001751673235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_5
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 335
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b1705ed49b90690800000000000000
+      internalID: -7635367949023896717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_6
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 272
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3d7f763773a81f20800000000000000
+      internalID: 3393642051634429244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_7
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 271
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53015816f4345ad0800000000000000
+      internalID: -2714486443823004837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 271
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5c151a89f1ae900800000000000000
+      internalID: 714418231293625781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 208
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77dcbbdcf15c09610800000000000000
+      internalID: 1626016205867044215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_10
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 207
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9afb03a9c5f5dd2a0800000000000000
+      internalID: -6711103018383654999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 207
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16814af6889ddacc0800000000000000
+      internalID: -3698060538989504415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 144
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ceab35c24027710800000000000000
+      internalID: 1689417398647188515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_13
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 143
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb292713cda306690800000000000000
+      internalID: -7611018652859329858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 143
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c5b8158dd5969a40800000000000000
+      internalID: 5374647983966565833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_15
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 80
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee58eec5d55d6500800000000000000
+      internalID: 391063119438831331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_16
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 79
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f0894dbafac48d0800000000000000
+      internalID: -2860718510746104008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_17
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 79
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3dab8182b805da0800000000000000
+      internalID: -5958109302681316413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_18
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 16
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e24fadf4d7e187b0800000000000000
+      internalID: -5223639190797860123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_19
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 15
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec109c60da2216be0800000000000000
+      internalID: -1485868275517029938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongIdle_AllSections_20
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 15
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3474b3bd491cf89e0800000000000000
+      internalID: -1616860896125302973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      LongIdle_AllSections_0: 3417461330733064022
+      LongIdle_AllSections_1: -3679331116487923926
+      LongIdle_AllSections_10: -6711103018383654999
+      LongIdle_AllSections_11: -3698060538989504415
+      LongIdle_AllSections_12: 1689417398647188515
+      LongIdle_AllSections_13: -7611018652859329858
+      LongIdle_AllSections_14: 5374647983966565833
+      LongIdle_AllSections_15: 391063119438831331
+      LongIdle_AllSections_16: -2860718510746104008
+      LongIdle_AllSections_17: -5958109302681316413
+      LongIdle_AllSections_18: -5223639190797860123
+      LongIdle_AllSections_19: -1485868275517029938
+      LongIdle_AllSections_2: 8255141238475283299
+      LongIdle_AllSections_20: -1616860896125302973
+      LongIdle_AllSections_3: -7873627597011703343
+      LongIdle_AllSections_4: -1631291001751673235
+      LongIdle_AllSections_5: -7635367949023896717
+      LongIdle_AllSections_6: 3393642051634429244
+      LongIdle_AllSections_7: -2714486443823004837
+      LongIdle_AllSections_8: 714418231293625781
+      LongIdle_AllSections_9: 1626016205867044215
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private GameObject player1Prefab;
     [SerializeField] private GameObject player2Prefab;
-
     public PlayerStats player1;
     public PlayerStats player2;
     public float matchTime = 30f;
