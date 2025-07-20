@@ -181,6 +181,14 @@ public class PlayerStats : MonoBehaviour
                 {
                     mana -= 2;
                     Heal(10);
+                    if (healEffect != null)
+                    {
+                        healEffect.SetActive(true);
+                        var ps = healEffect.GetComponent<ParticleSystem>();
+                        if (ps != null) ps.Play();
+                        // Tắt hiệu ứng sau 1.5s
+                        StartCoroutine(DisableHealEffectAfterDelay(1.5f));
+                    }
                 }
                 else
                 {
@@ -201,13 +209,25 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public GameObject shieldCircle; // Drag ShieldCircle here in Inspector
+    public GameObject healEffect; // Drag HealEffect here in Inspector
+
     private IEnumerator BlockCoroutine()
     {
         isBlocking = true;
+        if (shieldCircle != null) shieldCircle.SetActive(true);
         Debug.Log($"{playerName} is blocking for 3 seconds");
         yield return new WaitForSeconds(3f);
         isBlocking = false;
+        if (shieldCircle != null) shieldCircle.SetActive(false);
         Debug.Log($"{playerName} block ended");
+    }
+
+    private IEnumerator DisableHealEffectAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (healEffect != null)
+            healEffect.SetActive(false);
     }
 
     void Update()
