@@ -26,6 +26,16 @@ public class TrackingProjectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Projectile collided with: " + other.name);
+        if (other.CompareTag("Shield"))
+        {
+            var shieldOwner = other.GetComponent<ShieldOwner>();
+            if (shieldOwner != null && shieldOwner.isPlayer1 != isPlayer1)
+            {
+                Debug.Log("Hit opponent's shield, destroy projectile");
+                Destroy(gameObject);
+                return;
+            }
+        }
         if (other.transform == shooter)
         {
             Debug.Log("Collided with shooter, ignore");
