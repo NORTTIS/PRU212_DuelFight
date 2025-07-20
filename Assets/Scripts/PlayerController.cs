@@ -128,7 +128,9 @@ public class PlayerController : MonoBehaviour
         // Bỏ qua va chạm với chính người bắn
         Collider2D playerCollider = GetComponent<Collider2D>();
         Collider2D projCollider = proj.GetComponent<Collider2D>();
+        Collider2D petCollider = pet.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+        Physics2D.IgnoreCollision(petCollider, projCollider, true);
     }
     void Movement()
     {
