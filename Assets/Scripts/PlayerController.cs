@@ -23,14 +23,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowAimingController arrowAiming;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] Transform petFirePoint;
     [SerializeField] float fireLockRate = 0.2f;
 
     [SerializeField] float arrowSpeed = 10f;
     [SerializeField] float arrowLifetime = 2f;
     [SerializeField] bool isFacingRight;
+    //[SerializeField] float arrowLifetime = 2f;
 
     [SerializeField] public Animator animator;
-
+    [SerializeField] public GameObject pet;
+    [SerializeField] public int UltimateMana = 40;
     private bool isGrounded = false;
 
     private PlayerStats playerStats;
@@ -64,6 +67,19 @@ public class PlayerController : MonoBehaviour
                 playerStats.UseSkill(Enums.SkillType.Heal);
             if (Input.GetKeyDown(KeyCode.R))
                 playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+            if (Input.GetKeyDown(KeyCode.F) && playerStats.mana >= UltimateMana)
+            {
+                if (playerStats.mana >= UltimateMana)
+                {
+                    pet.SetActive(true);
+                    playerStats.mana -= UltimateMana;
+                }
+                else
+                {
+                    Debug.Log($"{playerStats.playerName} not enough mana for Pet summon");
+                }
+            }
+
         }
         else
         {
@@ -73,6 +89,19 @@ public class PlayerController : MonoBehaviour
                 playerStats.UseSkill(Enums.SkillType.Heal);
             if (Input.GetKeyDown(KeyCode.O))
                 playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (playerStats.mana >= UltimateMana)
+                {
+                    pet.SetActive(true);
+                    playerStats.mana -= UltimateMana;
+                }
+                else
+                {
+                    Debug.Log($"{playerStats.playerName} not enough mana for Pet summon");
+                }
+            }
+
         }
         if (playerStats.requestTrackingBullet)
         {
@@ -89,10 +118,20 @@ public class PlayerController : MonoBehaviour
         tp.isPlayer1 = isPlayer1;
         tp.shooter = this.transform;
 
+        if (pet.activeSelf)
+        {
+            GameObject projPet = Instantiate(GameManager.Instance.trackingProjectilePrefab, petFirePoint.position, Quaternion.identity);
+            TrackingProjectile tpPet = projPet.GetComponent<TrackingProjectile>();
+            tpPet.SetTarget(target.transform);
+            tpPet.isPlayer1 = isPlayer1;
+            tpPet.shooter = this.transform;
+        }
         // Bỏ qua va chạm với chính người bắn
         Collider2D playerCollider = GetComponent<Collider2D>();
         Collider2D projCollider = proj.GetComponent<Collider2D>();
+        Collider2D petCollider = pet.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+        Physics2D.IgnoreCollision(petCollider, projCollider, true);
     }
     void Movement()
     {
@@ -102,24 +141,56 @@ public class PlayerController : MonoBehaviour
 
         if (isPlayer1)
         {
-            // Player 1: A/D
-            if (Input.GetKey(KeyCode.A)) moveInput = -1f;
-            if (Input.GetKey(KeyCode.D)) moveInput = 1f;
-            // Nhảy bằng W
-            if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            if (playerStats.isConfused)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                // Player 1: D/A
+                if (Input.GetKey(KeyCode.D)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.A)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.S) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
             }
+            else
+            {
+                // Player 1: A/D
+
+                if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.D)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+            }
+
         }
         else
         {
-            // Player 2: ← / →
-            if (Input.GetKey(KeyCode.LeftArrow)) moveInput = -1f;
-            if (Input.GetKey(KeyCode.RightArrow)) moveInput = 1f;
-            // Nhảy bằng ↑
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+
+
+            if (playerStats.isConfused)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                // Player 1: D/A
+                if (Input.GetKey(KeyCode.RightArrow)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.LeftArrow)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.DownArrow) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                // Player 2: ← / →
+                if (Input.GetKey(KeyCode.LeftArrow)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.RightArrow)) moveInput = 1f;
+                // Nhảy bằng ↑
+                if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
             }
         }
         if (moveInput > 0 && !isFacingRight)
@@ -146,9 +217,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (rb.linearVelocity.y > 0)
         {
-            // Kiểm tra người chơi có thả nút nhảy sớm không
-            bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.W)) ||
+            bool releasedJump = false;
+            if (playerStats.isConfused)
+            {
+                releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.S)) ||
+                                                (!isPlayer1 && !Input.GetKey(KeyCode.DownArrow));
+            }
+            else
+            {
+                releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.W)) ||
                                 (!isPlayer1 && !Input.GetKey(KeyCode.UpArrow));
+            }
+            // Kiểm tra người chơi có thả nút nhảy sớm không
+
 
             if (releasedJump)
             {

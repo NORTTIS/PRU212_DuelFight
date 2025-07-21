@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: c01095b584f424a4986fde44aacdd5a6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8270482597671594714
+    second: Walking_AllWhite_AllSections_0
+  - first:
+      213: 5299926794159194263
+    second: Walking_AllWhite_AllSections_1
+  - first:
+      213: -4463655344615346499
+    second: Walking_AllWhite_AllSections_2
+  - first:
+      213: 5170103428198977366
+    second: Walking_AllWhite_AllSections_3
+  - first:
+      213: 524075050316762461
+    second: Walking_AllWhite_AllSections_4
+  - first:
+      213: -4618258709847415910
+    second: Walking_AllWhite_AllSections_5
+  - first:
+      213: -2999630795385708365
+    second: Walking_AllWhite_AllSections_6
+  - first:
+      213: 7210878212266546004
+    second: Walking_AllWhite_AllSections_7
+  - first:
+      213: -7376034428884772777
+    second: Walking_AllWhite_AllSections_8
+  - first:
+      213: 6930143365369347654
+    second: Walking_AllWhite_AllSections_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 209
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6251cb475e7593d80800000000000000
+      internalID: -8270482597671594714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 207
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7900f6dc65f1d8940800000000000000
+      internalID: 5299926794159194263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 28
+        width: 75
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbead601d19ed02c0800000000000000
+      internalID: -4463655344615346499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 146
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f44d1fca5efb740800000000000000
+      internalID: 5170103428198977366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_4
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 143
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5d86c94b73e54700800000000000000
+      internalID: 524075050316762461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_5
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 81
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93e0b60c26a8efb0800000000000000
+      internalID: -4618258709847415910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 79
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b066bf2fab2f56d0800000000000000
+      internalID: -2999630795385708365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 80
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45350c8778f221460800000000000000
+      internalID: 7210878212266546004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_8
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 18
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 758954f44cf03a990800000000000000
+      internalID: -7376034428884772777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking_AllWhite_AllSections_9
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 15
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64ebe5f5ca0dc2060800000000000000
+      internalID: 6930143365369347654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Walking_AllWhite_AllSections_0: -8270482597671594714
+      Walking_AllWhite_AllSections_1: 5299926794159194263
+      Walking_AllWhite_AllSections_2: -4463655344615346499
+      Walking_AllWhite_AllSections_3: 5170103428198977366
+      Walking_AllWhite_AllSections_4: 524075050316762461
+      Walking_AllWhite_AllSections_5: -4618258709847415910
+      Walking_AllWhite_AllSections_6: -2999630795385708365
+      Walking_AllWhite_AllSections_7: 7210878212266546004
+      Walking_AllWhite_AllSections_8: -7376034428884772777
+      Walking_AllWhite_AllSections_9: 6930143365369347654
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: Buff_DamageUp_+5
   type: 0
-  value: 10
+  value: 5
   duration: 5

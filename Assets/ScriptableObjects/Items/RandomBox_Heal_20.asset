@@ -17,3 +17,4 @@ MonoBehaviour:
   amount: 20
   buffEffect: {fileID: 0}
   isRandomBox: 1
+  randomEffectType: 0
