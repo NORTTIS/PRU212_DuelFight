@@ -94,10 +94,10 @@ public class GameManager : MonoBehaviour
         }
         
         // Show game over UI
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.ShowGameOver(winner.playerName, player1.score, player2.score);
-        }
+        // if (UIManager.Instance != null)
+        // {
+        //     UIManager.Instance.ShowGameOver(winner.playerName, player1.score, player2.score);
+        // }
     }
 
     public void HandleDeath(PlayerStats deadPlayer, string cause = "unknown")
