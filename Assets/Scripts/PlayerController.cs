@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float arrowSpeed = 10f;
     [SerializeField] float arrowLifetime = 2f;
     [SerializeField] bool isFacingRight;
+    //[SerializeField] float arrowLifetime = 2f;
 
     [SerializeField] public Animator animator;
     [SerializeField] public GameObject pet;

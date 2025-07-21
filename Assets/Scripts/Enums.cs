@@ -25,6 +25,11 @@ public class Enums : MonoBehaviour
         SpeedPenalty,
         Confusion
     }
+    public enum GameMode
+    {
+        Bo3,
+        VictoryByScore
+    }
 
     public enum SkillType
     {
