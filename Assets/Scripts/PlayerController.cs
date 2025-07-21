@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowAimingController arrowAiming;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] Transform petFirePoint;
     [SerializeField] float fireLockRate = 0.2f;
 
     [SerializeField] float arrowSpeed = 10f;
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] float arrowLifetime = 2f;
 
     [SerializeField] public Animator animator;
-
+    [SerializeField] public GameObject pet;
+    [SerializeField] public int UltimateMana = 40;
     private bool isGrounded = false;
 
     private PlayerStats playerStats;
@@ -65,6 +67,19 @@ public class PlayerController : MonoBehaviour
                 playerStats.UseSkill(Enums.SkillType.Heal);
             if (Input.GetKeyDown(KeyCode.R))
                 playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+            if (Input.GetKeyDown(KeyCode.F) && playerStats.mana >= UltimateMana)
+            {
+                if (playerStats.mana >= UltimateMana)
+                {
+                    pet.SetActive(true);
+                    playerStats.mana -= UltimateMana;
+                }
+                else
+                {
+                    Debug.Log($"{playerStats.playerName} not enough mana for Pet summon");
+                }
+            }
+
         }
         else
         {
@@ -74,6 +89,19 @@ public class PlayerController : MonoBehaviour
                 playerStats.UseSkill(Enums.SkillType.Heal);
             if (Input.GetKeyDown(KeyCode.O))
                 playerStats.UseSkill(Enums.SkillType.TrackingBullet);
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (playerStats.mana >= UltimateMana)
+                {
+                    pet.SetActive(true);
+                    playerStats.mana -= UltimateMana;
+                }
+                else
+                {
+                    Debug.Log($"{playerStats.playerName} not enough mana for Pet summon");
+                }
+            }
+
         }
         if (playerStats.requestTrackingBullet)
         {
@@ -90,10 +118,20 @@ public class PlayerController : MonoBehaviour
         tp.isPlayer1 = isPlayer1;
         tp.shooter = this.transform;
 
+        if (pet.activeSelf)
+        {
+            GameObject projPet = Instantiate(GameManager.Instance.trackingProjectilePrefab, petFirePoint.position, Quaternion.identity);
+            TrackingProjectile tpPet = projPet.GetComponent<TrackingProjectile>();
+            tpPet.SetTarget(target.transform);
+            tpPet.isPlayer1 = isPlayer1;
+            tpPet.shooter = this.transform;
+        }
         // Bỏ qua va chạm với chính người bắn
         Collider2D playerCollider = GetComponent<Collider2D>();
         Collider2D projCollider = proj.GetComponent<Collider2D>();
+        Collider2D petCollider = pet.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, projCollider, true);
+        Physics2D.IgnoreCollision(petCollider, projCollider, true);
     }
     void Movement()
     {

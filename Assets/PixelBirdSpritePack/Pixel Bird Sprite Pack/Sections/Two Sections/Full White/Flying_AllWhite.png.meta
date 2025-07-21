@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 1808924507d4d6741926fa4bf8b5694f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1597119197687972055
+    second: Flying_AllWhite_0
+  - first:
+      213: -3465984198891266724
+    second: Flying_AllWhite_1
+  - first:
+      213: 6648738342069618881
+    second: Flying_AllWhite_2
+  - first:
+      213: 776330298123221701
+    second: Flying_AllWhite_3
+  - first:
+      213: 3799542571095171158
+    second: Flying_AllWhite_4
+  - first:
+      213: -525529286050233674
+    second: Flying_AllWhite_5
+  - first:
+      213: 4204548890437071750
+    second: Flying_AllWhite_6
+  - first:
+      213: -709231775722935941
+    second: Flying_AllWhite_7
+  - first:
+      213: 6186483429566083798
+    second: Flying_AllWhite_8
+  - first:
+      213: -3224469946335526827
+    second: Flying_AllWhite_9
+  - first:
+      213: 3344386965878648367
+    second: Flying_AllWhite_10
+  - first:
+      213: 896979391676604711
+    second: Flying_AllWhite_11
+  - first:
+      213: -3633089965584401544
+    second: Flying_AllWhite_12
+  - first:
+      213: 2906173052239475323
+    second: Flying_AllWhite_13
+  - first:
+      213: 3795524227053720815
+    second: Flying_AllWhite_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Flying_AllWhite_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 209
+        width: 55
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92ff9d53d84e5d9e0800000000000000
+      internalID: -1597119197687972055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 273
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d18f31cb956efc0800000000000000
+      internalID: -3465984198891266724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 221
+        width: 36
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c8449bab40154c50800000000000000
+      internalID: 6648738342069618881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 271
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5caf1000b4416ca00800000000000000
+      internalID: 776330298123221701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 136
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6502a1b66dfaab430800000000000000
+      internalID: 3799542571095171158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 158
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b249e116e1f4b8f0800000000000000
+      internalID: -525529286050233674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_6
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 207
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683b34f60fe895a30800000000000000
+      internalID: 4204548890437071750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_7
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 94
+        width: 30
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b796d98257d4826f0800000000000000
+      internalID: -709231775722935941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 146
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d2702cd6edcad550800000000000000
+      internalID: 6186483429566083798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 71
+        width: 52
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5508fb3faa16043d0800000000000000
+      internalID: -3224469946335526827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_10
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 80
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ea4a4e936a96e20800000000000000
+      internalID: 3344386965878648367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 82
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 721eabb1106b27c00800000000000000
+      internalID: 896979391676604711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 15
+        width: 110
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b3e4cdceba49dc0800000000000000
+      internalID: -3633089965584401544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_13
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 16
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b72fb825efcc45820800000000000000
+      internalID: 2906173052239475323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flying_AllWhite_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 18
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe41de9cc296ca430800000000000000
+      internalID: 3795524227053720815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Flying_AllWhite_0: -1597119197687972055
+      Flying_AllWhite_1: -3465984198891266724
+      Flying_AllWhite_10: 3344386965878648367
+      Flying_AllWhite_11: 896979391676604711
+      Flying_AllWhite_12: -3633089965584401544
+      Flying_AllWhite_13: 2906173052239475323
+      Flying_AllWhite_14: 3795524227053720815
+      Flying_AllWhite_2: 6648738342069618881
+      Flying_AllWhite_3: 776330298123221701
+      Flying_AllWhite_4: 3799542571095171158
+      Flying_AllWhite_5: -525529286050233674
+      Flying_AllWhite_6: 4204548890437071750
+      Flying_AllWhite_7: -709231775722935941
+      Flying_AllWhite_8: 6186483429566083798
+      Flying_AllWhite_9: -3224469946335526827
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

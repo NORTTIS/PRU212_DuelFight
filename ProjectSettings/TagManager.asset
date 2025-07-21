@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Item
+  - Pet
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -16,6 +18,7 @@ TagManager:
   - Ground
   - Player
   - Item
+  - Pet
   - 
   - 
   - 

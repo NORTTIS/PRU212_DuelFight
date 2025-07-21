@@ -5,10 +5,8 @@ using static Enums;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    //[SerializeField] private GameObject player1Prefab;
-    //[SerializeField] private GameObject player2Prefab;
-
+    [SerializeField] private GameObject player1Prefab;
+    [SerializeField] private GameObject player2Prefab;
     public PlayerStats player1;
     public PlayerStats player2;
 
@@ -30,8 +28,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         defaultMatchTime = matchTime;
-        //player1 = player1Prefab.GetComponent<PlayerStats>();
-        //player2 = player2Prefab.GetComponent<PlayerStats>();
+        player1 = player1Prefab.GetComponent<PlayerStats>();
+        player2 = player2Prefab.GetComponent<PlayerStats>();
     }
     void Start()
     {
