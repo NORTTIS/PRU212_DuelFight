@@ -118,11 +118,11 @@ public class UIManager : MonoBehaviour
     {
         if (isPlayer1 && player1ScoreText != null)
         {
-            player1ScoreText.text = $"Score: {score}";
+            player1ScoreText.text = $"{score}";
         }
         else if (!isPlayer1 && player2ScoreText != null)
         {
-            player2ScoreText.text = $"Score: {score}";
+            player2ScoreText.text = $"{score}";
         }
     }
 
@@ -130,13 +130,13 @@ public class UIManager : MonoBehaviour
     {
         if (isPlayer1)
         {
-            if (player1AttackText != null) player1AttackText.text = $"ATK: {attack}";
-            if (player1SpeedText != null) player1SpeedText.text = $"SPD: {speed:F1}";
+            if (player1AttackText != null) player1AttackText.text = $"{attack}";
+            if (player1SpeedText != null) player1SpeedText.text = $"{speed:F1}";
         }
         else
         {
-            if (player2AttackText != null) player2AttackText.text = $"ATK: {attack}";
-            if (player2SpeedText != null) player2SpeedText.text = $"SPD: {speed:F1}";
+            if (player2AttackText != null) player2AttackText.text = $"{attack}";
+            if (player2SpeedText != null) player2SpeedText.text = $"{speed:F1}";
         }
     }
 
@@ -159,7 +159,7 @@ public class UIManager : MonoBehaviour
             if (finalScoreText != null) finalScoreText.text = $"Final Score: {player1Score} - {player2Score}";
         }
     }
-
+        
     public void HideGameOver()
     {
         if (gameOverPanel != null)
