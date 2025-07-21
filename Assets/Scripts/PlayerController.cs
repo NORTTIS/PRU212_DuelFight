@@ -141,24 +141,56 @@ public class PlayerController : MonoBehaviour
 
         if (isPlayer1)
         {
-            // Player 1: A/D
-            if (Input.GetKey(KeyCode.A)) moveInput = -1f;
-            if (Input.GetKey(KeyCode.D)) moveInput = 1f;
-            // Nhảy bằng W
-            if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            if (playerStats.isConfused)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                // Player 1: D/A
+                if (Input.GetKey(KeyCode.D)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.A)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.S) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
             }
+            else
+            {
+                // Player 1: A/D
+
+                if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.D)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+            }
+
         }
         else
         {
-            // Player 2: ← / →
-            if (Input.GetKey(KeyCode.LeftArrow)) moveInput = -1f;
-            if (Input.GetKey(KeyCode.RightArrow)) moveInput = 1f;
-            // Nhảy bằng ↑
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+
+
+            if (playerStats.isConfused)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                // Player 1: D/A
+                if (Input.GetKey(KeyCode.RightArrow)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.LeftArrow)) moveInput = 1f;
+                // Nhảy bằng W
+                if (Input.GetKeyDown(KeyCode.DownArrow) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                // Player 2: ← / →
+                if (Input.GetKey(KeyCode.LeftArrow)) moveInput = -1f;
+                if (Input.GetKey(KeyCode.RightArrow)) moveInput = 1f;
+                // Nhảy bằng ↑
+                if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
             }
         }
         if (moveInput > 0 && !isFacingRight)
@@ -185,9 +217,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (rb.linearVelocity.y > 0)
         {
-            // Kiểm tra người chơi có thả nút nhảy sớm không
-            bool releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.W)) ||
+            bool releasedJump = false;
+            if (playerStats.isConfused)
+            {
+                releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.S)) ||
+                                                (!isPlayer1 && !Input.GetKey(KeyCode.DownArrow));
+            }
+            else
+            {
+                releasedJump = (isPlayer1 && !Input.GetKey(KeyCode.W)) ||
                                 (!isPlayer1 && !Input.GetKey(KeyCode.UpArrow));
+            }
+            // Kiểm tra người chơi có thả nút nhảy sớm không
+
 
             if (releasedJump)
             {
