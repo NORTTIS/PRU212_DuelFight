@@ -24,7 +24,7 @@ public class UIUpdater : MonoBehaviour
         if (player1Stats != null)
         {
             UIManager.Instance.UpdatePlayerHealth(true, player1Stats.currentHP, player1Stats.maxHP);
-            UIManager.Instance.UpdatePlayerMana(true, player1Stats.mana, 10);
+            UIManager.Instance.UpdatePlayerMana(true, player1Stats.mana, 40);
             UIManager.Instance.UpdatePlayerScore(true, player1Stats.score);
             UIManager.Instance.UpdatePlayerStats(true, player1Stats.currentAttack, player1Stats.currentSpeed);
         }
@@ -33,9 +33,9 @@ public class UIUpdater : MonoBehaviour
         if (player2Stats != null)
         {
             UIManager.Instance.UpdatePlayerHealth(false, player2Stats.currentHP, player2Stats.maxHP);
-            UIManager.Instance.UpdatePlayerMana(false, player2Stats.mana, 10);
+            UIManager.Instance.UpdatePlayerMana(false, player2Stats.mana, 40);
             UIManager.Instance.UpdatePlayerScore(false, player2Stats.score);
             UIManager.Instance.UpdatePlayerStats(false, player2Stats.currentAttack, player2Stats.currentSpeed);
         }
     }
-} 
+}

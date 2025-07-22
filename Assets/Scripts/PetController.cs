@@ -6,6 +6,8 @@ public class PetController : MonoBehaviour
     // Layer dùng để kiểm tra pet có đang đứng trên mặt đất hay không
     [SerializeField] LayerMask groundCheck;
 
+    [SerializeField] bool isItemCollect = true;
+
     // Tham chiếu đến player để pet có thể theo dõi và di chuyển gần
     [SerializeField] public PlayerController player;
 
@@ -33,10 +35,7 @@ public class PetController : MonoBehaviour
             aiPath.maxSpeed = moveSpeed;
             aiPath.canMove = true; // Cho phép di chuyển lúc đầu
         }
-        else
-        {
-            Debug.LogWarning("AIPath component not found on pet!");
-        }
+
 
         // Lặp lại hàm UpdateTarget mỗi 0.5 giây
         InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
@@ -65,8 +64,16 @@ public class PetController : MonoBehaviour
             destinationSetter.target = null;
         }
 
-        // Tìm item gần nhất
-        GameObject nearestItem = FindClosestItemWithTag("Item");
+        // Tìm item, starpoint gần nhất
+        GameObject nearestItem;
+        if (isItemCollect)
+        {
+            nearestItem = FindClosestItemWithTag("Item");
+        }
+        else
+        {
+            nearestItem = FindClosestItemWithTag("StarPoint");
+        }
         if (nearestItem != null)
         {
             // Nếu có item, di chuyển đến item đó
@@ -74,7 +81,6 @@ public class PetController : MonoBehaviour
             if (aiPath != null)
             {
                 aiPath.canMove = true;
-                Debug.Log("New item found, pet moving to " + nearestItem.transform.position + " at " + System.DateTime.Now.ToString("hh:mm:ss tt"));
             }
         }
         else
@@ -98,7 +104,6 @@ public class PetController : MonoBehaviour
                 destinationSetter.target = targetMarker.transform;
                 aiPath.canMove = true;
 
-                Debug.Log("Moving to near player at " + targetMarker.transform.position);
             }
         }
     }
@@ -117,7 +122,6 @@ public class PetController : MonoBehaviour
             {
                 aiPath.canMove = false;
                 destinationSetter.target = null;
-                Debug.Log("Reached 1f from player, pet stopped at " + System.DateTime.Now.ToString("hh:mm:ss tt"));
             }
             // Nếu bị dừng mà player lại chạy xa thì tiếp tục di chuyển
             else if (distanceToPlayer > 1f && !aiPath.canMove)
@@ -128,7 +132,7 @@ public class PetController : MonoBehaviour
     }
 
     /// <summary>
-    /// Tìm object gần nhất có tag chỉ định (ví dụ: "Item")
+    /// Tìm object gần nhất có tag chỉ định (ví dụ: "Item","Starpoint")
     /// </summary>
     GameObject FindClosestItemWithTag(string tag)
     {

@@ -14,6 +14,17 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI player1AttackText;
     public TextMeshProUGUI player1SpeedText;
 
+    [Header("Player 1 Buffs/Debuffs")]
+    public GameObject player1AttackBuff;
+    public GameObject player1SpeedBuff;
+    public GameObject player1ShieldBuff;
+    public GameObject player1ConfusionDebuff;
+    public TextMeshProUGUI player1AtkDurationText;
+    public TextMeshProUGUI player1SpeedDurationText;
+
+    public TextMeshProUGUI player1ShieldDurationText;
+    public TextMeshProUGUI player1ConfusionDurationText;
+
     [Header("Player 2 UI")]
     public Slider player2HealthBar;
     public Slider player2ManaBar;
@@ -21,6 +32,18 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI player2NameText;
     public TextMeshProUGUI player2AttackText;
     public TextMeshProUGUI player2SpeedText;
+
+    [Header("Player 2 Buffs/Debuffs")]
+    public GameObject player2AttackBuff;
+    public GameObject player2SpeedBuff;
+    public GameObject player2ShieldBuff;
+    public GameObject player2ConfusionBuff;
+
+    public TextMeshProUGUI player2AtkDurationText;
+    public TextMeshProUGUI player2SpeedDurationText;
+
+    public TextMeshProUGUI player2ShieldDurationText;
+    public TextMeshProUGUI player2ConfusionDurationText;
 
     [Header("Center UI")]
     public TextMeshProUGUI matchTimerText;
@@ -43,6 +66,7 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     void Start()
@@ -73,12 +97,12 @@ public class UIManager : MonoBehaviour
         // Set up mana bars
         if (player1ManaBar != null)
         {
-            player1ManaBar.maxValue = 10;
+            player1ManaBar.maxValue = 40;
             player1ManaBar.value = 0;
         }
         if (player2ManaBar != null)
         {
-            player2ManaBar.maxValue = 10;
+            player2ManaBar.maxValue = 40;
             player2ManaBar.value = 0;
         }
 
@@ -126,7 +150,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerStats(bool isPlayer1, int attack, float speed)
+    public void UpdatePlayerStats(bool isPlayer1, int attack, float speed, float duration = 0f)
     {
         if (isPlayer1)
         {
@@ -139,6 +163,61 @@ public class UIManager : MonoBehaviour
             if (player2SpeedText != null) player2SpeedText.text = $"{speed:F1}";
         }
     }
+
+    public void SetBuffUI(bool isPlayer1, string type, bool active, float duration)
+    {
+        GameObject icon = null;
+        TextMeshProUGUI durationText = null;
+
+        if (isPlayer1)
+        {
+            switch (type)
+            {
+                case "ATK":
+                    icon = player1AttackBuff;
+                    durationText = player1AtkDurationText;
+                    break;
+                case "SPD":
+                    icon = player1SpeedBuff;
+                    durationText = player1SpeedDurationText;
+                    break;
+                case "SHD":
+                    icon = player1ShieldBuff;
+                    durationText = player1ShieldDurationText;
+                    break;
+                case "CONF":
+                    icon = player1ConfusionDebuff;
+                    durationText = player1ConfusionDurationText;
+                    break;
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case "ATK":
+                    icon = player2AttackBuff;
+                    durationText = player2AtkDurationText;
+                    break;
+                case "SPD":
+                    icon = player2SpeedBuff;
+                    durationText = player2SpeedDurationText;
+                    break;
+                case "SHD":
+                    icon = player2ShieldBuff;
+                    durationText = player2ShieldDurationText;
+                    break;
+                case "CONF":
+                    icon = player2ConfusionBuff;
+                    durationText = player2ConfusionDurationText;
+                    break;
+            }
+        }
+
+        if (icon != null) icon.SetActive(active);
+        if (durationText != null) durationText.text = active ? $"{duration:0.00}s" : "";
+    }
+
 
     public void UpdateMatchTimer(float timeLeft)
     {
@@ -159,10 +238,10 @@ public class UIManager : MonoBehaviour
             if (finalScoreText != null) finalScoreText.text = $"Final Score: {player1Score} - {player2Score}";
         }
     }
-        
+
     public void HideGameOver()
     {
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
     }
-} 
+}

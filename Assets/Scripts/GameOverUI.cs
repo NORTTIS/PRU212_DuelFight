@@ -7,6 +7,7 @@ public class GameOverUI : MonoBehaviour
     {
         // Reload current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     public void MainMenu()
@@ -18,10 +19,10 @@ public class GameOverUI : MonoBehaviour
 
     public void QuitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
-} 
+}

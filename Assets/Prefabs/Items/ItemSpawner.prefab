@@ -54,5 +54,5 @@ MonoBehaviour:
   - {fileID: 1962498829544726023, guid: 3d2c7fa25b0551547b09b42687fea4c9, type: 3}
   - {fileID: 5790120063233016654, guid: 9c7a80545e5285140ae38e21d16fe5c9, type: 3}
   - {fileID: 1138521134794189283, guid: 480c4bb98a7e3474597fbd728266c260, type: 3}
-  spawnInterval: 20
+  spawnInterval: 4
   spawnHeight: 5

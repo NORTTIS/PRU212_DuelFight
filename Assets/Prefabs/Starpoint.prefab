@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7238390488367949116}
   m_Layer: 0
   m_Name: Starpoint
-  m_TagString: Item
+  m_TagString: StarPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,3 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2924d1bc56f523c4db6da5baacf70cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaAmount: 4
