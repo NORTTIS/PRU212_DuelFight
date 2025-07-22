@@ -1,12 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private GameObject player1Prefab;
     [SerializeField] private GameObject player2Prefab;
+    [SerializeField] private GameObject scoreTextObject;
+    [SerializeField] private GameObject gameStartMess;
+    [SerializeField] private GameObject gameOverMess;
+    private bool isGameOver = false;
 
     public PlayerStats player1;
     public PlayerStats player2;
@@ -28,16 +34,23 @@ public class GameManager : MonoBehaviour
     {
         player1.playerName = "Player 1";
         player2.playerName = "Player 2";
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        matchTime -= Time.deltaTime;
-        if (matchTime <= 0f)
+        
+        if(!isGameOver)
         {
-            EvaluateWinner();
+            matchTime -= Time.deltaTime;
+            if (matchTime <= 0f)
+            {
+                EvaluateWinner();
+            }
+            HandleStartGameInput();
         }
+        
     }
 
     public void PlayerTakeDamageFromOther(bool isPlayer1)
@@ -78,5 +91,42 @@ public class GameManager : MonoBehaviour
         Debug.Log("Sudden Death! One Hit KO activated.");
         player1.ActivateOneHitKO();
         player2.ActivateOneHitKO();
+    }
+
+    private void StartGame()
+    {
+        Time.timeScale = 0;
+        scoreTextObject.SetActive(false);
+        gameStartMess.SetActive(true);
+        gameOverMess.SetActive(false);
+    }
+    private void HandleStartGameInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Time.timeScale = 1;
+            scoreTextObject.SetActive(true);
+            gameStartMess.SetActive(false);
+        }
+    }
+
+    private void GameOver()
+    {
+        isGameOver = true;
+        gameOverMess.SetActive(true); 
+        Time.timeScale = 0;
+        StartCoroutine(RealoadScene());
+
+    }
+
+    private void StartCoroutine(IEnumerable enumerable)
+    {
+        throw new NotImplementedException();
+    }
+
+    private IEnumerable RealoadScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
