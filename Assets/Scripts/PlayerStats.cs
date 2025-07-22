@@ -32,6 +32,13 @@ public class PlayerStats : MonoBehaviour
     {
         currentHP = Mathf.Min(maxHP, currentHP + amount);
         Debug.Log($"{playerName} healed +{amount} → {currentHP}/{maxHP}");
+        
+        // Update UI
+        if (UIManager.Instance != null)
+        {
+            bool isPlayer1 = playerName == "Player 1";
+            UIManager.Instance.UpdatePlayerHealth(isPlayer1, currentHP, maxHP);
+        }
     }
 
     public void TakeDamage(int amount, string source = "Unknown")
@@ -48,6 +55,13 @@ public class PlayerStats : MonoBehaviour
         }
 
         Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}, blocking {isBlocking}");
+        
+        // Update UI
+        if (UIManager.Instance != null)
+        {
+            bool isPlayer1 = playerName == "Player 1";
+            UIManager.Instance.UpdatePlayerHealth(isPlayer1, currentHP, maxHP);
+        }
 
         if (currentHP <= 0)
         {
@@ -59,6 +73,13 @@ public class PlayerStats : MonoBehaviour
     {
         mana = Mathf.Min(40, mana + amount);
         Debug.Log($"{playerName} gained {amount} mana → {mana}/40");
+        
+        // Update UI
+        if (UIManager.Instance != null)
+        {
+            bool isPlayer1 = playerName == "Player 1";
+            UIManager.Instance.UpdatePlayerMana(isPlayer1, mana, 10);
+        }
     }
 
     public void ApplyBuff(PlayerBuffType type, float value, float duration)
@@ -206,7 +227,9 @@ public class PlayerStats : MonoBehaviour
                 if (mana >= 4)
                 {
                     mana -= 4;
-                    requestTrackingBullet = true; // Đánh dấu cần bắn đạn
+                    // Gọi trực tiếp FireTrackingBullet ở đây
+                    GetComponent<PlayerController>().FireTrackingBullet();
+                    // Không cần dùng requestTrackingBullet nữa
                 }
                 else
                 {

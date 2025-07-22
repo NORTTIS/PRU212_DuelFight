@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             playerStats.requestTrackingBullet = false;
         }
     }
-    void FireTrackingBullet()
+    public void FireTrackingBullet()
     {
         PlayerStats target = isPlayer1 ? GameManager.Instance.player2 : GameManager.Instance.player1;
         GameObject proj = Instantiate(GameManager.Instance.trackingProjectilePrefab, firePoint.position, Quaternion.identity);

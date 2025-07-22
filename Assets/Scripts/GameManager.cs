@@ -45,7 +45,14 @@ public class GameManager : MonoBehaviour
         {
             matchTime -= Time.deltaTime;
 
-            if (matchTime <= 0f)
+            
+        // Update UI timer
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateMatchTimer(matchTime);
+        }
+        
+        if (matchTime <= 0f)
             {
                 matchTime = 0f;
 
@@ -85,6 +92,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        
+        // Show game over UI
+        // if (UIManager.Instance != null)
+        // {
+        //     UIManager.Instance.ShowGameOver(winner.playerName, player1.score, player2.score);
+        // }
     }
 
     public void HandleDeath(PlayerStats deadPlayer, string cause = "unknown")
@@ -121,7 +134,15 @@ public class GameManager : MonoBehaviour
                     return;
                 }
 
-                StartCoroutine(Respawn(deadPlayer));
+                
+        // Update UI scores
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdatePlayerScore(true, player1.score);
+            UIManager.Instance.UpdatePlayerScore(false, player2.score);
+        }
+        
+        StartCoroutine(Respawn(deadPlayer));
             }
             deadPlayer.isDead = true;
         }
