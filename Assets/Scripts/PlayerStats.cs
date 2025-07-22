@@ -4,12 +4,14 @@ using static Enums;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] Transform spawnPoint;
     public string playerName = "Player";
 
     [Header("Stats")]
     public int maxHP = 100;
     public int currentHP;
     public int mana = 0;
+    public int maxMana = 40;
     public int score = 0;
     public int baseAttack = 10;
     public int currentAttack;
@@ -32,7 +34,7 @@ public class PlayerStats : MonoBehaviour
     {
         currentHP = Mathf.Min(maxHP, currentHP + amount);
         Debug.Log($"{playerName} healed +{amount} → {currentHP}/{maxHP}");
-        
+
         // Update UI
         if (UIManager.Instance != null)
         {
@@ -55,7 +57,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         Debug.Log($"{playerName} took {amount} damage from {source}. HP: {currentHP}, blocking {isBlocking}");
-        
+
         // Update UI
         if (UIManager.Instance != null)
         {
@@ -73,12 +75,12 @@ public class PlayerStats : MonoBehaviour
     {
         mana = Mathf.Min(40, mana + amount);
         Debug.Log($"{playerName} gained {amount} mana → {mana}/40");
-        
+
         // Update UI
         if (UIManager.Instance != null)
         {
             bool isPlayer1 = playerName == "Player 1";
-            UIManager.Instance.UpdatePlayerMana(isPlayer1, mana, 10);
+            UIManager.Instance.UpdatePlayerMana(isPlayer1, mana, 40);
         }
     }
 
@@ -126,35 +128,45 @@ public class PlayerStats : MonoBehaviour
 
     IEnumerator BuffCoroutine(PlayerBuffType type, float value, float duration)
     {
+        bool isPlayer1 = playerName == "Player 1";
+        float timeLeft = duration;
         if (type == PlayerBuffType.Damage)
         {
             currentAttack += Mathf.RoundToInt(value);
-            Debug.Log($"{playerName} gained +{value} ATK → {currentAttack} (duration: {duration}s)");
+            while (timeLeft > 0f)
+            {
+                UIManager.Instance?.SetBuffUI(isPlayer1, "ATK", true, timeLeft);
+                yield return new WaitForSeconds(0.1f);
+                timeLeft -= 0.1f;
+            }
         }
         else if (type == PlayerBuffType.Speed)
         {
             currentSpeed *= value;
-            Debug.Log($"{playerName} speed x{value} → {currentSpeed} (duration: {duration}s)");
+            while (timeLeft > 0f)
+            {
+                UIManager.Instance?.SetBuffUI(isPlayer1, "SPD", true, timeLeft);
+                yield return new WaitForSeconds(0.1f);
+                timeLeft -= 0.1f;
+            }
         }
-
-        yield return new WaitForSeconds(duration);
 
         if (type == PlayerBuffType.Damage)
         {
             currentAttack = baseAttack;
-            Debug.Log($"{playerName}'s ATK reset → {currentAttack}");
+            UIManager.Instance?.SetBuffUI(isPlayer1, "ATK", false, 0f);
         }
         else if (type == PlayerBuffType.Speed)
         {
             currentSpeed = baseSpeed;
-            Debug.Log($"{playerName}'s speed reset → {currentSpeed}");
+            UIManager.Instance?.SetBuffUI(isPlayer1, "SPD", false, 0f);
         }
     }
 
     public void ResetStats()
     {
         currentHP = maxHP;
-        mana = 0;
+        mana = 10;
         isConfused = false;
         isDead = false;
         currentAttack = baseAttack;
@@ -164,12 +176,12 @@ public class PlayerStats : MonoBehaviour
     public void Respawn()
     {
         currentHP = maxHP;
-        mana = 0;
+        // mana = 0;
         isConfused = false;
         isDead = false;
         //oneHitKO = false;
         currentAttack = baseAttack;
-        transform.position = Vector3.zero;
+        transform.position = spawnPoint.position;
         Debug.Log($"{playerName} respawned");
     }
 
@@ -180,11 +192,17 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator ConfuseCoroutine(float duration)
     {
+        bool isPlayer1 = playerName == "Player 1";
+        float timeLeft = duration;
         isConfused = true;
-        Debug.Log($"{playerName} is confused for {duration} seconds.");
-        yield return new WaitForSeconds(duration);
+        while (timeLeft > 0f)
+        {
+            UIManager.Instance?.SetBuffUI(isPlayer1, "CONF", true, timeLeft);
+            yield return new WaitForSeconds(0.1f);
+            timeLeft -= 0.1f;
+        }
         isConfused = false;
-        Debug.Log($"{playerName} is no longer confused.");
+        UIManager.Instance?.SetBuffUI(isPlayer1, "CONF", false, 0f);
     }
 
     public bool requestTrackingBullet = false;
@@ -244,13 +262,19 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator BlockCoroutine()
     {
+        bool isPlayer1 = playerName == "Player 1";
+        float timeLeft = 3f;
         isBlocking = true;
         if (shieldCircle != null) shieldCircle.SetActive(true);
-        Debug.Log($"{playerName} is blocking for 3 seconds");
-        yield return new WaitForSeconds(3f);
+        while (timeLeft > 0f)
+        {
+            UIManager.Instance?.SetBuffUI(isPlayer1, "SHD", true, timeLeft);
+            yield return new WaitForSeconds(0.1f);
+            timeLeft -= 0.1f;
+        }
         isBlocking = false;
         if (shieldCircle != null) shieldCircle.SetActive(false);
-        Debug.Log($"{playerName} block ended");
+        UIManager.Instance?.SetBuffUI(isPlayer1, "SHD", false, 0f);
     }
 
     private IEnumerator DisableHealEffectAfterDelay(float delay)

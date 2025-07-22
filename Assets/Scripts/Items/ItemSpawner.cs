@@ -64,6 +64,6 @@ public class ItemSpawner : MonoBehaviour
             item.AddComponent<CircleCollider2D>();
         }
 
-        Debug.Log($"Spawned item: {prefab.name} at {spawnPos}");
+        // Debug.Log($"Spawned item: {prefab.name} at {spawnPos}");
     }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b4579db68c787b48915f6f7fa044ec5
+guid: 950ef6f8dcd7ec64080703bef2680812
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4222192597709396820
-    second: 992158e6-214f-431a-a80b-51469cb0c9ea-0_0
+      213: 2087931828202778420
+    second: defense_boost_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 992158e6-214f-431a-a80b-51469cb0c9ea-0_0
+      name: defense_boost_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45b90c72ccd389a30800000000000000
-      internalID: 4222192597709396820
+      spriteID: 43f22477fe2d9fc10800000000000000
+      internalID: 2087931828202778420
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      992158e6-214f-431a-a80b-51469cb0c9ea-0_0: 4222192597709396820
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

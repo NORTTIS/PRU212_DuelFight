@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameMode gameMode = GameMode.Bo3;
 
-    public float matchTime = 30f;
+    public float matchTime = 90f;
     private float defaultMatchTime;
     public GameObject trackingProjectilePrefab;
     // [SerializeField] private Transform player1SpawnPoint;
@@ -45,14 +45,14 @@ public class GameManager : MonoBehaviour
         {
             matchTime -= Time.deltaTime;
 
-            
-        // Update UI timer
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.UpdateMatchTimer(matchTime);
-        }
-        
-        if (matchTime <= 0f)
+
+            // Update UI timer
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.UpdateMatchTimer(matchTime);
+            }
+
+            if (matchTime <= 0f)
             {
                 matchTime = 0f;
 
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         // Show game over UI
         // if (UIManager.Instance != null)
         // {
@@ -134,15 +134,15 @@ public class GameManager : MonoBehaviour
                     return;
                 }
 
-                
-        // Update UI scores
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.UpdatePlayerScore(true, player1.score);
-            UIManager.Instance.UpdatePlayerScore(false, player2.score);
-        }
-        
-        StartCoroutine(Respawn(deadPlayer));
+
+                // Update UI scores
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.UpdatePlayerScore(true, player1.score);
+                    UIManager.Instance.UpdatePlayerScore(false, player2.score);
+                }
+
+                StartCoroutine(Respawn(deadPlayer));
             }
             deadPlayer.isDead = true;
         }
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         {
             ProcessVictory(player2);
         }
-        ResetGame();
+        StartCoroutine(ResetGame());
     }
 
     void ProcessVictory(PlayerStats winner)
@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[VICTORY] {winner.playerName} wins the match!");
 
         Time.timeScale = 0f; // Dừng game
+        UIManager.Instance.ShowGameOver(winner.playerName, player1.score, player2.score);
     }
 
     IEnumerator Respawn(PlayerStats player)
@@ -186,6 +187,9 @@ public class GameManager : MonoBehaviour
 
         player1.Respawn();
         player2.Respawn();
+        // player1Prefab.GetComponent<PlayerController>().pet.SetActive(false);
+        // player2Prefab.GetComponent<PlayerController>().pet.SetActive(false);
+        Time.timeScale = 1f;
 
         Debug.Log("New round started.");
     }
@@ -193,12 +197,16 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeDamageFromOther(bool isPlayer1)
     {
         PlayerStats targetPlayer = isPlayer1 ? player1 : player2;
-        int damage = isPlayer1 ? player2.baseAttack : player1.baseAttack;
+        int damage = isPlayer1 ? player2.currentAttack : player1.currentAttack;
 
         if (!targetPlayer.isDead)
         {
             targetPlayer.currentHP -= damage;
             Debug.Log($"Player {(isPlayer1 ? "1" : "2")} took {damage} damage. Remaining health: {targetPlayer.currentHP}");
+        }
+        if (targetPlayer.currentHP <= 0)
+        {
+            HandleDeath(targetPlayer);
         }
     }
 }

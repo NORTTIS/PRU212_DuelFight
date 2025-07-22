@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
         else if (moveInput < 0)
             animator.SetBool("ishor", false);
 
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveInput * playerStats.currentSpeed, rb.linearVelocity.y);
 
     }
     void HandleJump()

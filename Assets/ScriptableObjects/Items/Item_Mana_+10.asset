@@ -16,5 +16,5 @@ MonoBehaviour:
   itemType: 3
   amount: 10
   buffEffect: {fileID: 0}
-  isRandomBox: 1
+  isRandomBox: 0
   randomEffectType: 0

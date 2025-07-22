@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      16x64 Red Simple Healthbar_0: -2007716763141669504
+      16x64 Red Simple Healthbar_1: -3158080506476472598
+      16x64 Red Simple Healthbar_2: 5818743665288361340
+      16x64 Red Simple Healthbar_3: 4795256360431160904
+      16x64 Red Simple Healthbar_4: -5008463523487913453
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

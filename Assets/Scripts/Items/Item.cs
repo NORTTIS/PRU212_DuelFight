@@ -16,32 +16,48 @@ public class Item : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (pickedUp) return;
-        if (!other.CompareTag("Player")) return;
 
-        var player = other.GetComponent<PlayerStats>();
+        PlayerStats player = null;
+
+        if (other.CompareTag("Player"))
+        {
+            player = other.GetComponent<PlayerStats>();
+        }
+        else if (other.CompareTag("Pet"))
+        {
+            PetController pet = other.GetComponent<PetController>();
+            if (pet != null)
+            {
+                player = pet.player.GetComponent<PlayerStats>();
+            }
+        }
+
         if (player == null) return;
 
         pickedUp = true;
+        HandleItemPickup(player);
+        Destroy(gameObject);
+    }
 
+    private void HandleItemPickup(PlayerStats player)
+    {
         if (effect == null)
         {
-            Debug.LogWarning($"Item {name} missing ItemEffect reference!");
+            // Debug.LogWarning($"Item {name} missing ItemEffect reference!");
             Destroy(gameObject);
             return;
         }
 
         if (effect.isRandomBox)
         {
-            Debug.Log($"{name} is a random box: {effect.randomEffectType}");
+            // Debug.Log($"{name} is a random box: {effect.randomEffectType}");
             ApplyRandomEffect(player, effect.randomEffectType);
         }
         else
         {
-            Debug.Log($"{name} is a fixed item: {effect.itemType}");
+            // Debug.Log($"{name} is a fixed item: {effect.itemType}");
             ApplyFixedEffect(player);
         }
-
-        Destroy(gameObject);
     }
 
     void ApplyFixedEffect(PlayerStats player)
@@ -62,7 +78,7 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"{player.playerName} used fixed item: {effect.effectName}");
+        // Debug.Log($"{player.playerName} used fixed item: {effect.effectName}");
     }
 
     void ApplyRandomEffect(PlayerStats player, Enums.RandomEffect effectType)
@@ -89,6 +105,6 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"{player.playerName} received random effect: {effectType} from {name}");
+        // Debug.Log($"{player.playerName} received random effect: {effectType} from {name}");
     }
 }
