@@ -9120,7 +9120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &404381885
 Transform:
   m_ObjectHideFlags: 0
@@ -9683,7 +9683,7 @@ MonoBehaviour:
   maxMana: 40
   score: 0
   baseAttack: 10
-  currentAttack: 0
+  currentAttack: 10
   baseSpeed: 5
   currentSpeed: 5
   isConfused: 0
@@ -11004,28 +11004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebugText: 0
-  ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
-  WorldUpOverride: {fileID: 0}
-  ChannelMask: -1
-  UpdateMethod: 2
-  BlendUpdateMethod: 1
-  LensModeOverride:
-    Enabled: 0
-    DefaultMode: 2
-  DefaultBlend:
-    Style: 1
-    Time: 2
-    CustomCurve:
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  CustomBlends: {fileID: 0}
-  m_OutputCamera: {fileID: 519420031}
-  m_TargetOverride: {fileID: 0}
-  m_LastFrameUpdated: 1099
 --- !u!1 &531104502
 GameObject:
   m_ObjectHideFlags: 0
@@ -13725,11 +13703,11 @@ MonoBehaviour:
   playerName: Player
   maxHP: 100
   currentHP: 0
-  mana: 0
+  mana: 10
   maxMana: 40
   score: 0
-  baseAttack: 15
-  currentAttack: 0
+  baseAttack: 10
+  currentAttack: 10
   baseSpeed: 5
   currentSpeed: 5
   isConfused: 0
